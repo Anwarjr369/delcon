@@ -1,0 +1,22 @@
+# apphosting.yaml - Firebase App Hosting Configuration
+# Reference: https://firebase.google.com/docs/app-hosting
+
+# Cloud Run service resource allocation
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0       # Scale to zero when idle to minimize costs
+  maxInstances: 10      # Max container scale ceiling
+  concurrency: 80       # Concurrent requests handled per container instance
+
+# Environment variables available during build and runtime
+env:
+  - variable: NEXT_PUBLIC_SITE_NAME
+    value: "Decon JEE"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: ENVIRONMENT
+    value: "production"
+    availability:
+      - RUNTIME
