@@ -26,6 +26,210 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // AUDIO FEEDBACK ENGINE (Web Audio API Synthesizer - 100% Zero-Dependency)
+  // =========================================================================
+  const SoundFX = {
+    enabled: localStorage.getItem('delcon_sound') !== 'false',
+    ctx: null,
+    init() {
+      if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    },
+    playClick() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(650, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300, this.ctx.currentTime + 0.04);
+        gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.04);
+      } catch (e) {}
+    },
+    playCorrect() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        const now = this.ctx.currentTime;
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + i * 0.06);
+          gain.gain.setValueAtTime(0.09, now + i * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.22);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + i * 0.06);
+          osc.stop(now + i * 0.06 + 0.22);
+        });
+      } catch (e) {}
+    },
+    playIncorrect() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        const now = this.ctx.currentTime;
+        [220, 185].forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, now + i * 0.08);
+          gain.gain.setValueAtTime(0.07, now + i * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.16);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + i * 0.08);
+          osc.stop(now + i * 0.08 + 0.16);
+        });
+      } catch (e) {}
+    }
+  };
+
+  const soundToggleBtn = document.getElementById('sound-toggle-btn');
+  if (soundToggleBtn) {
+    soundToggleBtn.textContent = SoundFX.enabled ? '🔊 Audio: ON' : '🔇 Audio: OFF';
+    soundToggleBtn.addEventListener('click', () => {
+      SoundFX.enabled = !SoundFX.enabled;
+      localStorage.setItem('delcon_sound', SoundFX.enabled ? 'true' : 'false');
+      soundToggleBtn.textContent = SoundFX.enabled ? '🔊 Audio: ON' : '🔇 Audio: OFF';
+      showToast(SoundFX.enabled ? 'Audio feedback enabled' : 'Audio feedback muted');
+      if (SoundFX.enabled) SoundFX.playCorrect();
+    });
+  }
+
+  // =========================================================================
+  // KATEX SCIENTIFIC MATH RENDERER HELPER
+  // =========================================================================
+  function renderAllMath(root = document.body) {
+    if (window.renderMathInElement) {
+      try {
+        window.renderMathInElement(root, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+          ],
+          throwOnError: false
+        });
+      } catch (e) {}
+    }
+  }
+
+  setTimeout(() => renderAllMath(), 800);
+
+  // =========================================================================
+  // LIVE NTA EXAM COUNTDOWN ENGINE (Target: JEE Main 2027 Session 1)
+  // =========================================================================
+  const examTargetDate = new Date('2027-01-24T09:00:00+05:30').getTime();
+  function updateCountdownClock() {
+    const now = new Date().getTime();
+    const distance = examTargetDate - now;
+    if (distance > 0) {
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const cdDays = document.getElementById('countdown-days');
+      const cdHrs = document.getElementById('countdown-hrs');
+      const cdMins = document.getElementById('countdown-mins');
+      const cdSecs = document.getElementById('countdown-secs');
+      const deskClock = document.getElementById('desk-countdown-clock');
+
+      if (cdDays) cdDays.textContent = days;
+      if (cdHrs) cdHrs.textContent = String(hours).padStart(2, '0');
+      if (cdMins) cdMins.textContent = String(mins).padStart(2, '0');
+      if (cdSecs) cdSecs.textContent = String(secs).padStart(2, '0');
+      if (deskClock) deskClock.textContent = `${days} Days`;
+    }
+  }
+  setInterval(updateCountdownClock, 1000);
+  updateCountdownClock();
+
+  // =========================================================================
+  // ASPIRANT STUDY DESK TELEMETRY & BOOKMARKS PERSISTENCE
+  // =========================================================================
+  const StudyDesk = {
+    getStats() {
+      const raw = localStorage.getItem('delcon_study_desk');
+      if (raw) {
+        try { return JSON.parse(raw); } catch (e) {}
+      }
+      return {
+        solvedToday: 14,
+        dailyTarget: 20,
+        correctCount: 12,
+        attemptedTotal: 14,
+        streakDays: 4,
+        bookmarks: []
+      };
+    },
+    saveStats(data) {
+      localStorage.setItem('delcon_study_desk', JSON.stringify(data));
+      this.render();
+    },
+    recordAttempt(isCorrect) {
+      const data = this.getStats();
+      data.solvedToday = (data.solvedToday || 0) + 1;
+      data.attemptedTotal = (data.attemptedTotal || 0) + 1;
+      if (isCorrect) data.correctCount = (data.correctCount || 0) + 1;
+      this.saveStats(data);
+    },
+    toggleBookmark(qObj) {
+      const data = this.getStats();
+      data.bookmarks = data.bookmarks || [];
+      const idx = data.bookmarks.findIndex(b => (b.id && b.id === qObj.id) || (b.question && b.question === qObj.question));
+      if (idx >= 0) {
+        data.bookmarks.splice(idx, 1);
+        showToast('Question removed from Bookmarks');
+      } else {
+        data.bookmarks.push(qObj);
+        showToast('⭐ Question saved to Revision Bookmarks!');
+      }
+      this.saveStats(data);
+      return idx < 0;
+    },
+    render() {
+      const data = this.getStats();
+      const solvedEl = document.getElementById('user-solved-count');
+      const targetEl = document.getElementById('user-goal-target');
+      const pctEl = document.getElementById('user-goal-pct');
+      const fillEl = document.getElementById('user-goal-progress-fill');
+      const accEl = document.getElementById('user-accuracy-display');
+      const marksEl = document.getElementById('user-net-marks');
+      const streakEl = document.getElementById('user-streak-display');
+      const bmCountEl = document.getElementById('desk-bookmark-count');
+
+      const pct = Math.min(100, Math.round((data.solvedToday / (data.dailyTarget || 20)) * 100));
+      if (solvedEl) solvedEl.textContent = data.solvedToday;
+      if (targetEl) targetEl.textContent = data.dailyTarget;
+      if (pctEl) pctEl.textContent = `${pct}%`;
+      if (fillEl) fillEl.style.width = `${pct}%`;
+
+      const accuracy = data.attemptedTotal > 0 ? Math.round((data.correctCount / data.attemptedTotal) * 100) : 86;
+      if (accEl) accEl.textContent = `${accuracy}%`;
+
+      const netMarks = (data.correctCount * 4) - ((data.attemptedTotal - data.correctCount) * 1);
+      if (marksEl) marksEl.textContent = `${netMarks >= 0 ? '+' : ''}${netMarks} Marks`;
+      if (streakEl) streakEl.textContent = `${data.streakDays || 4} Days`;
+      if (bmCountEl) bmCountEl.textContent = (data.bookmarks || []).length;
+    }
+  };
+  StudyDesk.render();
+
+  // =========================================================================
   // 2. Mobile Navigation Drawer
   // =========================================================================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
