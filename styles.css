@@ -174,7 +174,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  height: auto;
+  min-height: var(--header-height);
+  display: flex;
+  flex-direction: column;
   z-index: 1000;
   background-color: var(--glass-bg);
   backdrop-filter: blur(16px);
@@ -187,7 +190,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  height: var(--navbar-height);
 }
 
 .brand-logo {
