@@ -3275,6 +3275,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('.hub-node-card[data-stream-target]').forEach(card => {
+    card.addEventListener('click', () => {
+      const targetStream = card.getAttribute('data-stream-target');
+      if (targetStream) {
+        switchExamStream(targetStream);
+      }
+    });
+  });
+
   // JEE Advanced Multi-Choice interactive options
   document.querySelectorAll('.adv-multi-opt').forEach(opt => {
     opt.addEventListener('click', () => {
