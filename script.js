@@ -1110,6 +1110,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    renderAllMath(questionContainer);
+
     // Attach click handlers to options
     const optElements = questionContainer.querySelectorAll('.arena-opt');
     optElements.forEach(optEl => {
@@ -1120,12 +1122,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const isCorrect = (selectedIdx === q.correctIndex);
         if (isCorrect) {
           optEl.classList.add('is-correct');
-          showToast('✅ Correct Answer! Great work.');
+          SoundFX.playCorrect();
+          StudyDesk.recordAttempt(true);
+          showToast('✅ Correct Answer! (+4 Marks)');
         } else {
           optEl.classList.add('is-wrong');
           // Highlight correct option
           optElements[q.correctIndex]?.classList.add('is-correct');
-          showToast('❌ Incorrect. Correct option highlighted in green.');
+          SoundFX.playIncorrect();
+          StudyDesk.recordAttempt(false);
+          showToast('❌ Incorrect choice (-1 Mark). Correct option highlighted in green.');
         }
 
         const elapsedSec = stopQuestionTimer();
