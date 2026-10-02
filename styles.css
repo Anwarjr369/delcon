@@ -1281,19 +1281,29 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  background: rgba(249, 115, 22, 0.12) !important;
+  border: 1px solid rgba(249, 115, 22, 0.35) !important;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.15);
+  color: var(--accent-amber-light) !important;
+  transition: all var(--trans-fast);
 }
 
-.icon-physics {
-  background: var(--color-phys-glow);
-  border: 1px solid rgba(56, 189, 248, 0.35);
+.subject-card:hover .subject-icon-box {
+  background: rgba(249, 115, 22, 0.22) !important;
+  border-color: var(--accent-amber) !important;
+  box-shadow: 0 0 26px var(--accent-amber-glow);
+  transform: scale(1.08);
 }
-.icon-chem {
-  background: var(--color-chem-glow);
-  border: 1px solid rgba(52, 211, 153, 0.35);
+
+.subject-svg-icon {
+  color: #fb923c;
+  filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.6));
 }
-.icon-math {
-  background: var(--color-math-glow);
-  border: 1px solid rgba(251, 113, 133, 0.35);
+
+.icon-physics, .icon-chem, .icon-math {
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: var(--accent-amber-light);
 }
 
 .subject-badge {
@@ -1328,10 +1338,15 @@ body {
   font-size: 0.76rem;
   font-weight: 600;
   padding: 4px 10px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.2);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
+}
+
+.subject-card:hover .subject-highlights span {
+  border-color: rgba(249, 115, 22, 0.35);
+  color: var(--text-primary);
 }
 
 .subject-card .btn {
@@ -1364,14 +1379,15 @@ body {
 
 .filter-btn:hover {
   background: var(--bg-surface-elevated);
+  border-color: rgba(249, 115, 22, 0.4);
   color: var(--text-primary);
 }
 
 .filter-btn.active {
-  background: var(--accent-primary);
-  color: #ffffff;
-  border-color: var(--accent-primary);
-  box-shadow: 0 4px 14px -2px rgba(99, 102, 241, 0.4);
+  background: var(--accent-amber-gradient) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-amber) !important;
+  box-shadow: 0 4px 16px var(--accent-amber-glow) !important;
 }
 
 .chapter-gateway-card {
