@@ -2099,13 +2099,17 @@ body {
 .footer-socials a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  transition: color var(--trans-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--trans-fast);
 }
 
 .footer-socials a:hover {
-  color: var(--text-primary);
+  color: var(--accent-amber-light);
+  transform: translateY(-1px);
 }
 
 .back-to-top-btn {
@@ -2123,9 +2127,11 @@ body {
 }
 
 .back-to-top-btn:hover {
-  background: var(--accent-primary);
+  background: var(--accent-amber-gradient);
+  border-color: var(--accent-amber);
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--accent-amber-glow);
 }
 
 /* ==========================================================================
