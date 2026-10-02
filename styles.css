@@ -4732,11 +4732,11 @@ body {
 }
 
 .study-desk-wrapper {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.85) 100%);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(22, 14, 8, 0.7) 0%, rgba(10, 14, 22, 0.88) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.25);
   border-radius: var(--radius-lg);
   padding: 28px 32px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), 0 0 20px rgba(249, 115, 22, 0.08);
   backdrop-filter: blur(12px);
 }
 
@@ -4755,7 +4755,7 @@ body {
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 1px;
-  color: var(--color-phys);
+  color: var(--accent-amber-light);
   display: block;
   margin-bottom: 4px;
 }
@@ -4782,17 +4782,24 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%) !important;
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+  background: var(--accent-amber-gradient) !important;
+  box-shadow: 0 4px 18px var(--accent-amber-glow) !important;
+  color: #ffffff !important;
   font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.desk-launch-mock-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px var(--accent-amber-glow) !important;
 }
 
 .btn-live-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 6px #34d399;
+  background: #fbbf24;
+  box-shadow: 0 0 8px #fbbf24;
 }
 
 .study-desk-grid {
@@ -4814,13 +4821,29 @@ body {
 
 .desk-card:hover {
   transform: translateY(-2px);
-  border-color: var(--border-strong);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 16px rgba(249, 115, 22, 0.12);
 }
 
 .desk-card-icon {
-  font-size: 1.8rem;
-  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--accent-amber-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.12);
+}
+
+.desk-card:hover .desk-card-icon {
+  background: rgba(249, 115, 22, 0.2);
+  border-color: var(--accent-amber);
+  box-shadow: 0 0 18px var(--accent-amber-glow);
+  transform: scale(1.06);
 }
 
 .desk-card-body {
@@ -4870,9 +4893,10 @@ body {
 }
 
 .streak-dot.active {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: #f59e0b;
-  color: #f59e0b;
+  background: rgba(249, 115, 22, 0.2);
+  border-color: var(--accent-amber);
+  color: #fdba74;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
 }
 
 .desk-flex-between {
@@ -4884,7 +4908,7 @@ body {
 .desk-pct-tag {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-phys);
+  color: var(--accent-amber-light);
 }
 
 .desk-progress-bar {
@@ -4897,7 +4921,8 @@ body {
 
 .desk-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  background: var(--accent-amber-gradient);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
   border-radius: 10px;
   transition: width 0.4s ease;
 }
