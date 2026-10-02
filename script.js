@@ -26,6 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // DYNAMIC HEADER HEIGHT SYNCHRONIZER (Guarantees Zero Nav Collision)
+  // =========================================================================
+  function syncHeaderHeight() {
+    const siteHeader = document.getElementById('site-header');
+    if (siteHeader) {
+      const h = siteHeader.offsetHeight;
+      if (h > 0) {
+        document.documentElement.style.setProperty('--header-height', `${h}px`);
+      }
+    }
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('load', syncHeaderHeight);
+  setTimeout(syncHeaderHeight, 100);
+
+  // =========================================================================
   // AUDIO FEEDBACK ENGINE (Web Audio API Synthesizer - 100% Zero-Dependency)
   // =========================================================================
   const SoundFX = {
