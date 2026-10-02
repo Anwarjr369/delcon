@@ -18,21 +18,21 @@
   --text-muted: #64748b;
   --text-inverse: #090d16;
 
-  /* Subject Color Identity */
-  --color-phys: #38bdf8;
-  --color-phys-glow: rgba(56, 189, 248, 0.2);
-  --color-chem: #34d399;
-  --color-chem-glow: rgba(52, 211, 153, 0.2);
-  --color-math: #fb7185;
-  --color-math-glow: rgba(251, 113, 133, 0.2);
+  /* Subject Color Identity - Harmonized Warm Solar Amber Accents */
+  --color-phys: #fb923c;
+  --color-phys-glow: rgba(249, 115, 22, 0.2);
+  --color-chem: #f97316;
+  --color-chem-glow: rgba(249, 115, 22, 0.2);
+  --color-math: #ea580c;
+  --color-math-glow: rgba(234, 88, 12, 0.2);
 
-  /* Primary Brand Accents */
-  --accent-primary: #6366f1;
-  --accent-primary-hover: #4f46e5;
-  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #fb7185 100%);
-  --accent-gradient-glow: rgba(99, 102, 241, 0.3);
+  /* Primary Brand Accents - Unified Amber & Solar Tech System (Pinterest Gcore Design System) */
+  --accent-primary: #f97316;
+  --accent-primary-hover: #ea580c;
+  --accent-gradient: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  --accent-gradient-glow: rgba(249, 115, 22, 0.45);
 
-  /* Amber & Solar Tech Tokens (Pinterest Gcore Design System) */
+  /* Amber & Solar Tech Tokens */
   --accent-amber: #f97316;
   --accent-amber-light: #fb923c;
   --accent-amber-dark: #ea580c;
