@@ -274,6 +274,85 @@
       </div>
     </section>
 
+    <!-- Aspirant Live Study Desk & Exam Telemetry Dashboard -->
+    <section id="study-desk" class="section study-desk-section">
+      <div class="container">
+        <div class="study-desk-wrapper">
+          <div class="study-desk-header">
+            <div class="desk-title-group">
+              <span class="desk-badge">STUDENT PERFORMANCE TELEMETRY</span>
+              <h2 class="desk-heading">My Exam Readiness Desk</h2>
+              <p class="desk-sub">Track active solving streaks, daily syllabus goals, accuracy metrics, and launch full-scale NTA CBT simulations.</p>
+            </div>
+            <div class="desk-actions">
+              <button class="btn btn-sm btn-primary desk-launch-mock-btn" id="desk-open-mock-btn">
+                <span>🖥️ Launch Full NTA CBT Mock</span>
+                <span class="btn-live-dot"></span>
+              </button>
+              <button class="btn btn-sm btn-outline desk-view-bookmarks-btn" id="desk-open-bookmarks-btn">
+                <span>⭐ My Revision Bookmarks (<strong id="desk-bookmark-count">0</strong>)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="study-desk-grid">
+            <!-- Metric 1: Active Study Streak -->
+            <div class="desk-card streak-card">
+              <div class="desk-card-icon">🔥</div>
+              <div class="desk-card-body">
+                <span class="desk-metric-val" id="user-streak-display">4 Days</span>
+                <span class="desk-metric-label">Active Solving Streak</span>
+                <div class="desk-streak-dots">
+                  <span class="streak-dot active" title="Day 1">M</span>
+                  <span class="streak-dot active" title="Day 2">T</span>
+                  <span class="streak-dot active" title="Day 3">W</span>
+                  <span class="streak-dot active" title="Day 4">T</span>
+                  <span class="streak-dot" title="Day 5">F</span>
+                  <span class="streak-dot" title="Day 6">S</span>
+                  <span class="streak-dot" title="Day 7">S</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Metric 2: Today's Solved Goal -->
+            <div class="desk-card goal-card">
+              <div class="desk-card-icon">🎯</div>
+              <div class="desk-card-body">
+                <div class="desk-flex-between">
+                  <span class="desk-metric-val"><strong id="user-solved-count">14</strong> / <span id="user-goal-target">20</span></span>
+                  <span class="desk-pct-tag" id="user-goal-pct">70%</span>
+                </div>
+                <span class="desk-metric-label">Today's PYQ Practice Goal</span>
+                <div class="desk-progress-bar">
+                  <div class="desk-progress-fill" id="user-goal-progress-fill" style="width: 70%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Metric 3: Exam Accuracy & Marks -->
+            <div class="desk-card accuracy-card">
+              <div class="desk-card-icon">📈</div>
+              <div class="desk-card-body">
+                <span class="desk-metric-val" id="user-accuracy-display">86.4%</span>
+                <span class="desk-metric-label">First-Attempt Accuracy</span>
+                <div class="desk-metric-sub">Net Marks Score: <strong style="color: #10b981;" id="user-net-marks">+52 Marks</strong></div>
+              </div>
+            </div>
+
+            <!-- Metric 4: NTA Countdown -->
+            <div class="desk-card countdown-card">
+              <div class="desk-card-icon">⏳</div>
+              <div class="desk-card-body">
+                <span class="desk-metric-val" id="desk-countdown-clock">114 Days</span>
+                <span class="desk-metric-label">To JEE Main 2027 Session 1</span>
+                <div class="desk-metric-sub">Session 2 in 184 Days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Dedicated Practice Modes Chooser (Structured Practice Architecture) -->
     <section id="practice-modes" class="section practice-modes-section">
       <div class="container">
