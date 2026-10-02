@@ -1453,8 +1453,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="modal-q-item" data-q-idx="${idx}" style="margin-bottom: 24px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <span class="sol-badge" style="background: rgba(249, 115, 22, 0.15); color: var(--accent-amber); border: 1px solid rgba(249, 115, 22, 0.3);">Q${idx + 1} of ${questionsList.length}</span>
-              ${q.questionId ? `<span class="tag-pill tag-pct" style="font-size: 0.72rem; font-family: monospace; background: rgba(249, 115, 22, 0.12); color: var(--accent-amber); border: 1px solid rgba(249, 115, 22, 0.25);">${q.questionId}</span>` : ''}
+              <span class="sol-badge" style="background: rgba(37, 99, 235, 0.15); color: var(--accent-cobalt-light); border: 1px solid rgba(96, 165, 250, 0.35);">Q${idx + 1} of ${questionsList.length}</span>
+              ${q.questionId ? `<span class="tag-pill tag-pct" style="font-size: 0.72rem; font-family: monospace; background: rgba(37, 99, 235, 0.12); color: var(--accent-cobalt-light); border: 1px solid rgba(96, 165, 250, 0.25);">${q.questionId}</span>` : ''}
               <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">${q.examMeta}</span>
               ${q.topic ? `<span style="font-size: 0.78rem; color: var(--text-secondary); background: var(--bg-surface-elevated); padding: 2px 7px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">📌 ${q.topic}</span>` : ''}
             </div>
