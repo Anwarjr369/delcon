@@ -4698,13 +4698,14 @@ body {
 }
 
 .countdown-badge {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
   padding: 3px 10px;
   border-radius: 20px;
-  color: #38bdf8;
+  color: #fb923c;
   font-size: 0.78rem;
   font-family: var(--font-mono);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.15);
 }
 
 .announcement-btn {
