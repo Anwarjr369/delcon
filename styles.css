@@ -2362,9 +2362,9 @@ body {
   border-radius: var(--radius-full);
 }
 .badge-2026 {
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: #818cf8;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: var(--accent-amber-light);
 }
 .badge-2025 {
   background: rgba(52, 211, 153, 0.15);
