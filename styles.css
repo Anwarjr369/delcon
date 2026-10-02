@@ -1968,8 +1968,8 @@ body {
 }
 
 .card-accent-gradient {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(56, 189, 248, 0.08) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(234, 88, 12, 0.06) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.3);
 }
 
 .accent-card-title {
@@ -2032,8 +2032,8 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+  border-color: var(--accent-amber);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
   background: var(--bg-surface);
 }
 
