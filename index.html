@@ -6227,49 +6227,243 @@
     </div>
   </dialog>
 
-  <!-- Native HTML5 Dialog Modal for Simulated Full Shift Exam -->
-  <dialog id="exam-modal" class="project-modal exam-modal">
-    <div class="modal-box exam-modal-box">
-      <div class="exam-modal-header">
-        <div>
-          <span class="sub-chip chip-phys">NTA Real Exam Interface</span>
-          <h3 id="exam-modal-title" class="modal-title">JEE Main 2026 Shift Paper</h3>
-          <span class="exam-sub-info">Max Marks: 300 • Time Remaining: <strong id="exam-timer-display" class="timer-countdown">02:59:45</strong></span>
+  <!-- Photorealistic NTA Computer Based Test (CBT) Real Exam Simulator -->
+  <dialog id="exam-modal" class="project-modal exam-modal nta-cbt-dialog">
+    <div class="modal-box nta-cbt-box">
+      <!-- NTA Top Bar -->
+      <div class="nta-top-bar">
+        <div class="nta-exam-identity">
+          <div class="nta-gov-emblem">NTA CBT</div>
+          <div>
+            <h3 id="exam-modal-title" class="nta-test-title">JEE (Main) 2027 Official Simulation Test</h3>
+            <span class="nta-session-tag">Computer Based Test &bull; Paper 1 (B.E./B.Tech) &bull; 300 Marks</span>
+          </div>
         </div>
-        <button id="close-exam-modal-btn" class="close-modal-btn" aria-label="Exit Mock Test">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+
+        <div class="nta-top-center">
+          <div class="nta-timer-badge">
+            <span class="nta-timer-icon">⏱️</span>
+            <span>Time Left:</span>
+            <strong id="exam-timer-display" class="nta-timer-digits">02:59:45</strong>
+          </div>
+        </div>
+
+        <div class="nta-top-controls">
+          <button id="nta-paper-view-btn" class="nta-control-btn" title="View Full Question Paper">📄 Question Paper</button>
+          <button id="nta-instructions-btn" class="nta-control-btn" title="View Test Instructions">ℹ️ Instructions</button>
+          <button id="close-exam-modal-btn" class="nta-exit-btn" aria-label="Exit Mock Test">✕ Exit Test</button>
+        </div>
       </div>
 
-      <div class="exam-modal-body">
-        <div class="exam-subject-tabs">
-          <button class="exam-tab-btn active" data-exam-sec="physics">Physics (25 Qs)</button>
-          <button class="exam-tab-btn" data-exam-sec="chemistry">Chemistry (25 Qs)</button>
-          <button class="exam-tab-btn" data-exam-sec="mathematics">Mathematics (25 Qs)</button>
+      <!-- Test Subject Tabs -->
+      <div class="nta-subject-bar">
+        <div class="nta-subject-tabs" id="nta-subject-tabs">
+          <button class="nta-tab-btn active" data-exam-sec="physics">
+            <span>PHYSICS</span>
+            <span class="nta-sec-q-count">(5 Qs)</span>
+          </button>
+          <button class="nta-tab-btn" data-exam-sec="chemistry">
+            <span>CHEMISTRY</span>
+            <span class="nta-sec-q-count">(5 Qs)</span>
+          </button>
+          <button class="nta-tab-btn" data-exam-sec="mathematics">
+            <span>MATHEMATICS</span>
+            <span class="nta-sec-q-count">(5 Qs)</span>
+          </button>
+        </div>
+        <div class="nta-marking-rule">
+          Marking Scheme: <span class="nta-green-rule">+4.00 for Correct</span> &bull; <span class="nta-red-rule">-1.00 for Incorrect</span> &bull; 0 for Unattempted
+        </div>
+      </div>
+
+      <!-- Two Column CBT Workspace -->
+      <div class="nta-cbt-workspace">
+        <!-- Left: Question Canvas -->
+        <div class="nta-canvas-col">
+          <div class="nta-q-header">
+            <div class="nta-q-meta-left">
+              <span class="nta-q-badge" id="nta-current-q-badge">Question No. 1</span>
+              <span class="nta-q-type-label" id="nta-q-type-label">Single Correct Option</span>
+            </div>
+            <div class="nta-q-meta-right">
+              <button class="nta-bookmark-btn" id="nta-bookmark-current-btn" title="Save this question for later review">
+                <span id="nta-bm-icon">⭐</span> <span id="nta-bm-text">Bookmark</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="nta-q-viewport">
+            <div class="nta-q-statement" id="exam-q-prompt">
+              <!-- Prompt inserted dynamically -->
+            </div>
+
+            <!-- Standard MCQs Options Container -->
+            <div class="nta-options-container" id="exam-modal-options">
+              <!-- Options inserted dynamically -->
+            </div>
+
+            <!-- Numerical Value Input Container (For Section B questions) -->
+            <div class="nta-numerical-container hidden" id="nta-numerical-container">
+              <div class="nta-numerical-prompt">Enter your integer or decimal answer using the on-screen keypad:</div>
+              <div class="nta-keypad-wrapper">
+                <input type="text" id="nta-num-input" class="nta-num-input" placeholder="Enter numerical answer..." readonly>
+                <div class="nta-virtual-keypad">
+                  <button class="key-btn" data-key="1">1</button>
+                  <button class="key-btn" data-key="2">2</button>
+                  <button class="key-btn" data-key="3">3</button>
+                  <button class="key-btn key-action" data-key="backspace">⌫ Back</button>
+                  <button class="key-btn" data-key="4">4</button>
+                  <button class="key-btn" data-key="5">5</button>
+                  <button class="key-btn" data-key="6">6</button>
+                  <button class="key-btn key-action" data-key="clear">Clear</button>
+                  <button class="key-btn" data-key="7">7</button>
+                  <button class="key-btn" data-key="8">8</button>
+                  <button class="key-btn" data-key="9">9</button>
+                  <button class="key-btn" data-key="-">-</button>
+                  <button class="key-btn" data-key=".">.</button>
+                  <button class="key-btn" data-key="0">0</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="nta-canvas-footer">
+            <div class="nta-footer-actions-left">
+              <button class="btn btn-outline btn-sm nta-btn-review" id="exam-mark-review-btn">
+                Mark for Review &amp; Next
+              </button>
+              <button class="btn btn-outline btn-sm nta-btn-clear" id="exam-clear-btn">
+                Clear Response
+              </button>
+            </div>
+            <div class="nta-footer-actions-right">
+              <button class="btn btn-outline btn-sm nta-btn-nav" id="exam-prev-btn">&laquo; Previous</button>
+              <button class="btn btn-primary btn-sm nta-btn-save-next" id="exam-save-next-btn">Save &amp; Next &raquo;</button>
+            </div>
+          </div>
         </div>
 
-        <div class="exam-q-viewport" id="exam-q-viewport">
-          <div class="exam-q-num-tag">Question 1 (Section A: Single Choice • +4 / -1)</div>
-          <p class="exam-q-prompt" id="exam-q-prompt">
-            A uniform disc of mass M and radius R is rotating with angular velocity &omega; about its central axis. A point mass m is placed gently on its edge. The new angular velocity of the system is:
-          </p>
-          <div class="exam-modal-options" id="exam-modal-options">
-            <div class="exam-opt-row"><span class="opt-label">A</span><span>(M / (M + 2m)) &omega;</span></div>
-            <div class="exam-opt-row"><span class="opt-label">B</span><span>(M / (M + m)) &omega;</span></div>
-            <div class="exam-opt-row"><span class="opt-label">C</span><span>(2M / (M + 2m)) &omega;</span></div>
-            <div class="exam-opt-row"><span class="opt-label">D</span><span>((M + 2m) / M) &omega;</span></div>
+        <!-- Right: Official NTA Question Palette & Candidate Profile -->
+        <div class="nta-palette-col">
+          <div class="nta-candidate-profile">
+            <div class="nta-candidate-avatar">AS</div>
+            <div class="nta-candidate-meta">
+              <div class="nta-candidate-name">Aspirant Sharma</div>
+              <div class="nta-candidate-roll">Roll: 27010492 | Terminal: C-104</div>
+            </div>
+          </div>
+
+          <!-- Official 5-State Legend -->
+          <div class="nta-legend-grid">
+            <div class="nta-legend-row">
+              <div class="nta-legend-item">
+                <span class="legend-badge answered" id="legend-count-answered">0</span>
+                <span>Answered</span>
+              </div>
+              <div class="nta-legend-item">
+                <span class="legend-badge not-answered" id="legend-count-not-answered">1</span>
+                <span>Not Answered</span>
+              </div>
+            </div>
+            <div class="nta-legend-row">
+              <div class="nta-legend-item">
+                <span class="legend-badge not-visited" id="legend-count-not-visited">14</span>
+                <span>Not Visited</span>
+              </div>
+              <div class="nta-legend-item">
+                <span class="legend-badge marked" id="legend-count-marked">0</span>
+                <span>Marked for Review</span>
+              </div>
+            </div>
+            <div class="nta-legend-item full-width">
+              <span class="legend-badge ans-marked" id="legend-count-ans-marked">0</span>
+              <span>Ans &amp; Marked for Review (Evaluated)</span>
+            </div>
+          </div>
+
+          <!-- Palette Question Numbers Grid -->
+          <div class="nta-palette-section">
+            <div class="nta-palette-heading">Question Palette:</div>
+            <div class="nta-q-buttons-grid" id="nta-palette-grid">
+              <!-- Dynamically populated buttons -->
+            </div>
+          </div>
+
+          <!-- Final Submit Test Button -->
+          <div class="nta-submit-wrap">
+            <button class="btn btn-primary nta-submit-test-btn" id="exam-submit-paper-btn">
+              SUBMIT TEST &raquo;
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="exam-modal-footer">
-        <div class="exam-footer-left">
-          <button class="btn btn-outline btn-sm" id="exam-save-next-btn">Save &amp; Mark</button>
-          <button class="btn btn-outline btn-sm" id="exam-clear-btn">Clear Choice</button>
+      <!-- Test Scorecard / Result Dialog (Appears on Submit) -->
+      <div class="nta-result-overlay hidden" id="nta-result-overlay">
+        <div class="nta-result-card">
+          <div class="nta-result-header">
+            <h3>🎯 NTA Mock Test Result &amp; Percentile Analysis</h3>
+            <span class="nta-result-shift-name" id="nta-result-exam-title">JEE Main Official Simulation</span>
+          </div>
+
+          <div class="nta-score-spotlight">
+            <div class="score-circle">
+              <span class="score-num" id="nta-final-score">0</span>
+              <span class="score-den">/ 300</span>
+            </div>
+            <div class="score-meta-tags">
+              <div class="score-tag-item">Estimated NTA Percentile: <strong id="nta-est-percentile">--</strong></div>
+              <div class="score-tag-item">Projected All India Rank (AIR): <strong id="nta-est-air">--</strong></div>
+              <div class="score-tag-item">Accuracy: <strong id="nta-test-accuracy">0%</strong></div>
+            </div>
+          </div>
+
+          <div class="nta-stat-breakdown-grid">
+            <div class="nta-stat-box green">
+              <span class="stat-cnt" id="nta-res-correct">0</span>
+              <span class="stat-lbl">Correct (+4 each)</span>
+            </div>
+            <div class="nta-stat-box red">
+              <span class="stat-cnt" id="nta-res-incorrect">0</span>
+              <span class="stat-lbl">Incorrect (-1 each)</span>
+            </div>
+            <div class="nta-stat-box grey">
+              <span class="stat-cnt" id="nta-res-unattempted">0</span>
+              <span class="stat-lbl">Unattempted (0)</span>
+            </div>
+          </div>
+
+          <div class="nta-result-actions">
+            <button class="btn btn-outline btn-sm" id="nta-review-solutions-btn">📖 Review Detailed Step Solutions</button>
+            <button class="btn btn-primary btn-sm" id="nta-close-result-btn">Close Report</button>
+          </div>
         </div>
-        <div class="exam-footer-right">
-          <button class="btn btn-primary btn-sm" id="exam-submit-paper-btn">Submit Full Paper</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- My Saved Revision Bookmarks Drawer -->
+  <dialog id="bookmarks-drawer" class="project-modal bookmarks-modal">
+    <div class="modal-box" style="max-width: 780px;">
+      <div class="modal-header">
+        <div>
+          <span class="sub-chip chip-phys">Personal Revision Hub</span>
+          <h3 class="modal-title">⭐ My Saved Revision Bookmarks</h3>
+          <span class="exam-sub-info">High-yield and tricky questions bookmarked during practice sessions.</span>
         </div>
+        <button id="close-bookmarks-btn" class="close-modal-btn" aria-label="Close Bookmarks Dialog">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="modal-body" style="max-height: 65vh; overflow-y: auto;">
+        <div id="bookmarks-list-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm" id="clear-all-bookmarks-btn">Clear All Bookmarks</button>
+        <button class="btn btn-primary btn-sm" id="done-bookmarks-btn">Done</button>
       </div>
     </div>
   </dialog>
