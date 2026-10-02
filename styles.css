@@ -1405,8 +1405,8 @@ body {
 }
 
 .chapter-gateway-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.15);
 }
 
 .chapter-gateway-card.gateway-adv {
