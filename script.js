@@ -2013,124 +2013,660 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Timed Mock Exam Dialog & Timer Simulation
+  // =========================================================================
+  // PHOTOREALISTIC NTA COMPUTER BASED TEST (CBT) REAL EXAM SIMULATOR
+  // =========================================================================
   const examModal = document.getElementById('exam-modal');
   const closeExamModalBtn = document.getElementById('close-exam-modal-btn');
   const examModalTitle = document.getElementById('exam-modal-title');
   const examTimerDisplay = document.getElementById('exam-timer-display');
-  const examSubjectTabs = document.querySelectorAll('.exam-tab-btn');
-  const examQPrompt = document.getElementById('exam-q-prompt');
-  const examOptionsContainer = document.getElementById('exam-modal-options');
   const examSubmitBtn = document.getElementById('exam-submit-paper-btn');
   const examClearBtn = document.getElementById('exam-clear-btn');
   const examSaveNextBtn = document.getElementById('exam-save-next-btn');
+  const examMarkReviewBtn = document.getElementById('exam-mark-review-btn');
+  const examPrevBtn = document.getElementById('exam-prev-btn');
+  const examQPrompt = document.getElementById('exam-q-prompt');
+  const examOptionsContainer = document.getElementById('exam-modal-options');
+  const ntaNumericalContainer = document.getElementById('nta-numerical-container');
+  const ntaNumInput = document.getElementById('nta-num-input');
+  const ntaPaletteGrid = document.getElementById('nta-palette-grid');
+  const ntaResultOverlay = document.getElementById('nta-result-overlay');
+  const ntaCloseResultBtn = document.getElementById('nta-close-result-btn');
+  const ntaReviewSolutionsBtn = document.getElementById('nta-review-solutions-btn');
 
   let examCountdownInterval = null;
-  let remainingSeconds = 3 * 3600; // 3 hours
+  let remainingSeconds = 3 * 3600;
 
-  function formatTimer(secs) {
-    const h = String(Math.floor(secs / 3600)).padStart(2, '0');
-    const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
-    const s = String(secs % 60).padStart(2, '0');
-    return `${h}:${m}:${s}`;
-  }
+  const cbtEngine = {
+    activeSubject: 'physics',
+    activeQIndex: 0,
+    reviewMode: false,
+    questions: {
+      physics: [
+        {
+          id: 'PHY-01',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'A uniform disc of mass $M$ and radius $R$ is rotating with angular velocity $\\omega$ about its central axis. A point mass $m$ is placed gently on its edge. The new angular velocity of the system is:',
+          options: [
+            '$\\frac{M}{M + 2m} \\omega$',
+            '$\\frac{M}{M + m} \\omega$',
+            '$\\frac{2M}{M + 2m} \\omega$',
+            '$\\frac{M + 2m}{M} \\omega$'
+          ],
+          correctOption: 'A',
+          solution: 'Angular momentum is conserved: $L_i = I_i \\omega = \\left(\\frac{1}{2} M R^2\\right) \\omega$. New moment of inertia: $I_f = \\frac{1}{2} M R^2 + m R^2 = \\left(\\frac{M + 2m}{2}\\right) R^2$. Therefore: $\\omega_f = \\frac{I_i}{I_f} \\omega = \\frac{M}{M + 2m} \\omega$.'
+        },
+        {
+          id: 'PHY-02',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'A charge $q$ is placed at the centre of an imaginary cube of side $a$. The electric flux passing through one face of the cube is:',
+          options: [
+            '$\\frac{q}{\\varepsilon_0}$',
+            '$\\frac{q}{6\\varepsilon_0}$',
+            '$\\frac{q}{24\\varepsilon_0}$',
+            '$0$'
+          ],
+          correctOption: 'B',
+          solution: 'By Gauss\'s Law, total flux through the cube is $\\Phi = q/\\varepsilon_0$. By cubic spatial symmetry across 6 identical square faces: $\\Phi_{\\text{face}} = \\frac{q}{6\\varepsilon_0}$.'
+        },
+        {
+          id: 'PHY-03',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'A block of mass $m$ is placed on an inclined plane of inclination $\\theta$ with coefficient of static friction $\\mu_s$. The minimum horizontal force $F$ applied on the block to prevent it from sliding down is:',
+          options: [
+            '$\\frac{mg(\\sin\\theta - \\mu_s\\cos\\theta)}{\\cos\\theta + \\mu_s\\sin\\theta}$',
+            '$\\frac{mg(\\sin\\theta + \\mu_s\\cos\\theta)}{\\cos\\theta - \\mu_s\\sin\\theta}$',
+            '$\\frac{mg(\\cos\\theta - \\mu_s\\sin\\theta)}{\\sin\\theta + \\mu_s\\cos\\theta}$',
+            '$mg\\tan\\theta$'
+          ],
+          correctOption: 'A',
+          solution: 'Resolving forces along and perpendicular to the incline with limiting friction $f_s = \\mu_s N$: $F\\cos\\theta + f_s = mg\\sin\\theta$, $N = mg\\cos\\theta + F\\sin\\theta$. Yields $F = \\frac{mg(\\sin\\theta - \\mu_s\\cos\\theta)}{\\cos\\theta + \\mu_s\\sin\\theta}$.'
+        },
+        {
+          id: 'PHY-04',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'A wire of resistance $R$ is cut into 5 equal parts. These 5 parts are then connected in parallel. If the equivalent resistance of this combination is $R\'$, then the ratio $R / R\'$ is:',
+          options: [
+            '$\\frac{1}{25}$',
+            '$\\frac{1}{5}$',
+            '$5$',
+            '$25$'
+          ],
+          correctOption: 'D',
+          solution: 'Each piece has resistance $r = R/5$. In parallel: $R\' = r/5 = R/25$. Therefore $R/R\' = 25$.'
+        },
+        {
+          id: 'PHY-05',
+          type: 'numerical',
+          marks: 4,
+          neg: 1,
+          question: 'A particle of mass $0.2\\text{ kg}$ executes simple harmonic motion of amplitude $0.1\\text{ m}$. When passing through the mean position, its kinetic energy is $8 \\times 10^{-3}\\text{ J}$. If the time period of oscillation is $\\frac{\\pi}{n}$ seconds, then find the integer value of $n$:',
+          correctValue: '5',
+          solution: '$K_{\\text{max}} = \\frac{1}{2} m \\omega^2 A^2 \\implies 8 \\times 10^{-3} = \\frac{1}{2} (0.2) \\omega^2 (0.01) \\implies \\omega^2 = 8000/80 = 100 \\implies \\omega = 10\\text{ rad/s}$. $T = \\frac{2\\pi}{\\omega} = \\frac{2\\pi}{10} = \\frac{\\pi}{5}$. Hence $n = 5$.'
+        }
+      ],
+      chemistry: [
+        {
+          id: 'CHEM-01',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'Which of the following complex ions exhibits both geometrical (cis-trans) and optical isomerism?',
+          options: [
+            '$[\\text{Co}(\\text{en})_2\\text{Cl}_2]^+$',
+            '$[\\text{Co}(\\text{NH}_3)_4\\text{Cl}_2]^+$',
+            '$[\\text{Pt}(\\text{NH}_3)_2\\text{Cl}_2]$',
+            '$[\\text{Cr}(\\text{en})_3]^{3+}$'
+          ],
+          correctOption: 'A',
+          solution: 'Octahedral complex $[\\text{Co}(\\text{en})_2\\text{Cl}_2]^+$ has cis and trans isomers. The cis-isomer lacks a plane of symmetry and is optically active (d and l enantiomers).'
+        },
+        {
+          id: 'CHEM-02',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'The order of basic strength of methyl substituted amines in aqueous solution is:',
+          options: [
+            '$(CH_3)_2NH > CH_3NH_2 > (CH_3)_3N > NH_3$',
+            '$(CH_3)_3N > (CH_3)_2NH > CH_3NH_2 > NH_3$',
+            '$CH_3NH_2 > (CH_3)_2NH > (CH_3)_3N > NH_3$',
+            '$(CH_3)_2NH > (CH_3)_3N > CH_3NH_2 > NH_3$'
+          ],
+          correctOption: 'A',
+          solution: 'In aqueous medium with methyl substituents, inductive effect (+I), solvation effect, and steric hindrance combine to yield order: $2^\\circ > 1^\\circ > 3^\\circ > NH_3$ (i.e. 213).'
+        },
+        {
+          id: 'CHEM-03',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'For a first order reaction, the time required for $99.9\\%$ completion of reaction is approximately how many times the half-life ($t_{1/2}$)?',
+          options: [
+            '$10$',
+            '$2$',
+            '$5$',
+            '$3$'
+          ],
+          correctOption: 'A',
+          solution: '$t_{99.9\\%} = \\frac{2.303}{k} \\log\\left(\\frac{100}{0.1}\\right) = \\frac{2.303 \\times 3}{k} \\approx 10 \\times \\left(\\frac{0.693}{k}\\right) = 10 \\times t_{1/2}$.'
+        },
+        {
+          id: 'CHEM-04',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'The spin-only magnetic moment of $[\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}$ is (in Bohr Magnetons):',
+          options: [
+            '$5.92\\text{ BM}$',
+            '$4.90\\text{ BM}$',
+            '$3.87\\text{ BM}$',
+            '$1.73\\text{ BM}$'
+          ],
+          correctOption: 'A',
+          solution: '$\\text{Mn}^{2+}$ has $3d^5$ configuration. Water is a weak field ligand, so all 5 electrons remain unpaired ($n = 5$). $\\mu = \\sqrt{5(5+2)} = \\sqrt{35} \\approx 5.92\\text{ BM}$.'
+        },
+        {
+          id: 'CHEM-05',
+          type: 'numerical',
+          marks: 4,
+          neg: 1,
+          question: 'Find the total number of lone pairs of electrons in a molecule of Xenon tetrafluoride ($\\text{XeF}_4$):',
+          correctValue: '14',
+          solution: 'Central Xe atom has 2 lone pairs. Each of the 4 Fluorine atoms possesses 3 lone pairs ($4 \\times 3 = 12$). Total lone pairs = $2 + 12 = 14$.'
+        }
+      ],
+      mathematics: [
+        {
+          id: 'MATH-01',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'If the shortest distance between the skew lines $\\frac{x - 1}{2} = \\frac{y + 1}{3} = z$ and $\\frac{x + 1}{5} = \\frac{y - 2}{1} = \\frac{z - 3}{0}$ is $d$, then the value of $d^2$ is:',
+          options: [
+            '$\\frac{14}{29}$',
+            '$\\frac{25}{19}$',
+            '$\\frac{36}{29}$',
+            '$\\frac{49}{38}$'
+          ],
+          correctOption: 'C',
+          solution: 'Standard shortest distance formula $d = \\frac{|(\\vec{a}_2 - \\vec{a}_1) \\cdot (\\vec{b}_1 \\times \\vec{b}_2)|}{|\\vec{b}_1 \\times \\vec{b}_2|}$. Computation gives $|\\vec{b}_1 \\times \\vec{b}_2|^2 = 29$ and numerator $= 6$. Thus $d^2 = 36/29$.'
+        },
+        {
+          id: 'MATH-02',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'The value of the definite integral $\\int_{-\\pi/2}^{\\pi/2} \\frac{\\cos^2 x}{1 + 2^x} dx$ is:',
+          options: [
+            '$\\frac{\\pi}{4}$',
+            '$\\frac{\\pi}{2}$',
+            '$\\pi$',
+            '$0$'
+          ],
+          correctOption: 'A',
+          solution: 'By King\'s property $I = \\int_{-a}^a f(x)dx$: adding $I + I$ gives $2I = \\int_{-\\pi/2}^{\\pi/2} \\cos^2 x dx = 2 \\int_0^{\\pi/2} \\cos^2 x dx = 2 (\\pi/4) \\implies I = \\pi/4$.'
+        },
+        {
+          id: 'MATH-03',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'If $A$ is a $3 \\times 3$ matrix such that $|A| = 4$, then the determinant of the adjoint of adjoint matrix $|\\text{adj}(\\text{adj}(A))|$ is:',
+          options: [
+            '$256$',
+            '$64$',
+            '$16$',
+            '$1024$'
+          ],
+          correctOption: 'A',
+          solution: '$|\\text{adj}(\\text{adj}(A))| = |A|^{(n-1)^2} = 4^{(3-1)^2} = 4^4 = 256$.'
+        },
+        {
+          id: 'MATH-04',
+          type: 'mcq',
+          marks: 4,
+          neg: 1,
+          question: 'The sum of all real values of $x$ satisfying the equation $2 \\log_2(\\log_2 x) + \\log_{1/2}(\\log_2(2\\sqrt{2}x)) = 1$ is:',
+          options: [
+            '$16$',
+            '$8$',
+            '$4$',
+            '$32$'
+          ],
+          correctOption: 'A',
+          solution: 'Let $t = \\log_2 x$. Simplifying gives $\\frac{t^2}{t + 3/2} = 2 \\implies t^2 - 2t - 3 = 0 \\implies t = 4$ (as $t > 0$ for log domain). $x = 2^4 = 16$.'
+        },
+        {
+          id: 'MATH-05',
+          type: 'numerical',
+          marks: 4,
+          neg: 1,
+          question: 'If $\\lim_{x \\to 0} \\frac{a e^x - b \\cos x + c e^{-x}}{x \\sin x} = 2$, then the value of $a + b + c$ is:',
+          correctValue: '4',
+          solution: 'For the limit to be finite, numerator must vanish at $x = 0$: $a - b + c = 0$. Using expansions: limit evaluates to $\\frac{a + b/2 + c}{1} = 2 \\implies 2a + b = 4$. Solving gives $a = 1, b = 2, c = 1 \\implies a + b + c = 4$.'
+        }
+      ]
+    },
+    userResponses: {}, // key `${sec}_${idx}`: { selected: 'A', status: 'not-visited'|'not-answered'|'answered'|'marked'|'ans-marked' }
+
+    init() {
+      // Initialize response state for all 15 questions
+      ['physics', 'chemistry', 'mathematics'].forEach(sec => {
+        this.questions[sec].forEach((q, i) => {
+          const key = `${sec}_${i}`;
+          if (!this.userResponses[key]) {
+            this.userResponses[key] = {
+              selected: '',
+              status: (sec === 'physics' && i === 0) ? 'not-answered' : 'not-visited'
+            };
+          }
+        });
+      });
+      this.reviewMode = false;
+      this.activeSubject = 'physics';
+      this.activeQIndex = 0;
+      if (ntaResultOverlay) ntaResultOverlay.classList.add('hidden');
+    },
+
+    getCurrentQ() {
+      return this.questions[this.activeSubject][this.activeQIndex];
+    },
+
+    getCurrentResponse() {
+      return this.userResponses[`${this.activeSubject}_${this.activeQIndex}`];
+    },
+
+    renderQuestion() {
+      const q = this.getCurrentQ();
+      const resp = this.getCurrentResponse();
+      if (!q) return;
+
+      // Update question badge
+      const qBadge = document.getElementById('nta-current-q-badge');
+      const qTypeLabel = document.getElementById('nta-q-type-label');
+      if (qBadge) qBadge.textContent = `Question No. ${this.activeQIndex + 1}`;
+      if (qTypeLabel) qTypeLabel.textContent = q.type === 'numerical' ? 'Section B: Numerical Value Type' : 'Section A: Single Correct Option (+4 / -1)';
+
+      // Update prompt
+      if (examQPrompt) {
+        examQPrompt.innerHTML = `
+          <div>${q.question}</div>
+          ${this.reviewMode && q.solution ? `
+            <div style="margin-top: 20px; padding: 16px; background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--color-phys); border-radius: 6px;">
+              <strong style="color: #38bdf8;">Verified NTA Solution:</strong><br>
+              ${q.solution}
+            </div>
+          ` : ''}
+        `;
+      }
+
+      // Handle MCQ vs Numerical
+      if (q.type === 'mcq') {
+        if (examOptionsContainer) examOptionsContainer.classList.remove('hidden');
+        if (ntaNumericalContainer) ntaNumericalContainer.classList.add('hidden');
+
+        if (examOptionsContainer) {
+          examOptionsContainer.innerHTML = (q.options || []).map((opt, i) => {
+            const letter = String.fromCharCode(65 + i);
+            const isSelected = resp.selected === letter;
+            const isCorrect = q.correctOption === letter;
+            let extraStyle = '';
+            if (this.reviewMode) {
+              if (isCorrect) extraStyle = 'border-color: #10b981; background: rgba(16, 185, 129, 0.2);';
+              else if (isSelected) extraStyle = 'border-color: #ef4444; background: rgba(239, 68, 68, 0.2);';
+            }
+            return `
+              <div class="nta-option-item ${isSelected ? 'selected' : ''}" data-letter="${letter}" style="${extraStyle}">
+                <div class="nta-opt-radio"></div>
+                <span class="nta-opt-text"><strong>(${letter})</strong> ${opt}</span>
+              </div>
+            `;
+          }).join('');
+
+          if (!this.reviewMode) {
+            examOptionsContainer.querySelectorAll('.nta-option-item').forEach(item => {
+              item.addEventListener('click', () => {
+                examOptionsContainer.querySelectorAll('.nta-option-item').forEach(it => it.classList.remove('selected'));
+                item.classList.add('selected');
+                resp.selected = item.getAttribute('data-letter');
+                SoundFX.playClick();
+              });
+            });
+          }
+        }
+      } else {
+        // Numerical Question
+        if (examOptionsContainer) examOptionsContainer.classList.add('hidden');
+        if (ntaNumericalContainer) ntaNumericalContainer.classList.remove('hidden');
+        if (ntaNumInput) ntaNumInput.value = resp.selected || '';
+      }
+
+      this.updatePaletteAndLegend();
+      renderAllMath(examQPrompt);
+      if (examOptionsContainer) renderAllMath(examOptionsContainer);
+    },
+
+    updatePaletteAndLegend() {
+      // Update Legend Counts
+      let counts = { answered: 0, notAnswered: 0, notVisited: 0, marked: 0, ansMarked: 0 };
+
+      ['physics', 'chemistry', 'mathematics'].forEach(sec => {
+        this.questions[sec].forEach((q, i) => {
+          const st = this.userResponses[`${sec}_${i}`]?.status || 'not-visited';
+          if (st === 'answered') counts.answered++;
+          else if (st === 'not-answered') counts.notAnswered++;
+          else if (st === 'marked') counts.marked++;
+          else if (st === 'ans-marked') counts.ansMarked++;
+          else counts.notVisited++;
+        });
+      });
+
+      const elAns = document.getElementById('legend-count-answered');
+      const elNotAns = document.getElementById('legend-count-not-answered');
+      const elNotVis = document.getElementById('legend-count-not-visited');
+      const elMark = document.getElementById('legend-count-marked');
+      const elAnsMark = document.getElementById('legend-count-ans-marked');
+
+      if (elAns) elAns.textContent = counts.answered;
+      if (elNotAns) elNotAns.textContent = counts.notAnswered;
+      if (elNotVis) elNotVis.textContent = counts.notVisited;
+      if (elMark) elMark.textContent = counts.marked;
+      if (elAnsMark) elAnsMark.textContent = counts.ansMarked;
+
+      // Render Question Palette Grid for active subject
+      if (ntaPaletteGrid) {
+        ntaPaletteGrid.innerHTML = this.questions[this.activeSubject].map((q, i) => {
+          const resp = this.userResponses[`${this.activeSubject}_${i}`];
+          const st = resp?.status || 'not-visited';
+          const isCurrent = i === this.activeQIndex;
+          return `
+            <button class="nta-palette-btn ${st} ${isCurrent ? 'current' : ''}" data-q-idx="${i}" title="Question ${i + 1}">
+              ${i + 1}
+            </button>
+          `;
+        }).join('');
+
+        ntaPaletteGrid.querySelectorAll('.nta-palette-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-q-idx'), 10);
+            this.jumpToQuestion(idx);
+          });
+        });
+      }
+    },
+
+    jumpToQuestion(idx) {
+      // If leaving a question that was not visited and not answered, mark as not-answered
+      const curResp = this.getCurrentResponse();
+      if (curResp && curResp.status === 'not-visited') {
+        curResp.status = curResp.selected ? 'answered' : 'not-answered';
+      }
+
+      this.activeQIndex = idx;
+      const targetResp = this.getCurrentResponse();
+      if (targetResp && targetResp.status === 'not-visited') {
+        targetResp.status = 'not-answered';
+      }
+      this.renderQuestion();
+      SoundFX.playClick();
+    },
+
+    saveAndNext() {
+      const resp = this.getCurrentResponse();
+      if (resp) {
+        if (resp.selected) {
+          resp.status = 'answered';
+        } else {
+          resp.status = 'not-answered';
+        }
+      }
+
+      SoundFX.playClick();
+      if (this.activeQIndex < this.questions[this.activeSubject].length - 1) {
+        this.jumpToQuestion(this.activeQIndex + 1);
+      } else {
+        // Move to next subject
+        const subjects = ['physics', 'chemistry', 'mathematics'];
+        const curIdx = subjects.indexOf(this.activeSubject);
+        if (curIdx < subjects.length - 1) {
+          this.switchSubject(subjects[curIdx + 1]);
+        } else {
+          showToast('End of question paper reached! Review or Submit Test.');
+          this.updatePaletteAndLegend();
+        }
+      }
+    },
+
+    markForReviewAndNext() {
+      const resp = this.getCurrentResponse();
+      if (resp) {
+        if (resp.selected) {
+          resp.status = 'ans-marked';
+        } else {
+          resp.status = 'marked';
+        }
+      }
+
+      SoundFX.playClick();
+      if (this.activeQIndex < this.questions[this.activeSubject].length - 1) {
+        this.jumpToQuestion(this.activeQIndex + 1);
+      } else {
+        showToast('Marked for Review. End of subject reached.');
+        this.updatePaletteAndLegend();
+      }
+    },
+
+    clearResponse() {
+      const resp = this.getCurrentResponse();
+      if (resp) {
+        resp.selected = '';
+        resp.status = 'not-answered';
+      }
+      if (ntaNumInput) ntaNumInput.value = '';
+      if (examOptionsContainer) {
+        examOptionsContainer.querySelectorAll('.nta-option-item').forEach(it => it.classList.remove('selected'));
+      }
+      this.updatePaletteAndLegend();
+      SoundFX.playClick();
+      showToast('Response cleared for this question.');
+    },
+
+    switchSubject(secKey) {
+      this.activeSubject = secKey;
+      this.activeQIndex = 0;
+      const targetResp = this.getCurrentResponse();
+      if (targetResp && targetResp.status === 'not-visited') {
+        targetResp.status = 'not-answered';
+      }
+
+      document.querySelectorAll('#nta-subject-tabs .nta-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-exam-sec') === secKey);
+      });
+
+      this.renderQuestion();
+      SoundFX.playClick();
+    },
+
+    submitExam() {
+      clearInterval(examCountdownInterval);
+
+      let correct = 0;
+      let incorrect = 0;
+      let unattempted = 0;
+      let totalMarks = 0;
+
+      ['physics', 'chemistry', 'mathematics'].forEach(sec => {
+        this.questions[sec].forEach((q, i) => {
+          const resp = this.userResponses[`${sec}_${i}`];
+          const userAns = resp?.selected?.trim();
+          if (!userAns) {
+            unattempted++;
+          } else {
+            const isRight = (q.type === 'mcq') ? (userAns === q.correctOption) : (userAns === q.correctValue);
+            if (isRight) {
+              correct++;
+              totalMarks += 4;
+            } else {
+              incorrect++;
+              totalMarks -= 1;
+            }
+          }
+        });
+      });
+
+      // Calculate Percentile & Rank
+      // Total 15 questions = 60 Marks Max (scaled to 300 marks)
+      const scaledMarks = Math.max(0, Math.round((totalMarks / 60) * 300));
+      let percentile = 82.5;
+      let airRank = '92,000 - 1,15,000';
+      if (scaledMarks >= 240) { percentile = 99.85; airRank = 'AIR 850 - 1,450'; }
+      else if (scaledMarks >= 200) { percentile = 99.25; airRank = 'AIR 4,500 - 7,200'; }
+      else if (scaledMarks >= 170) { percentile = 98.40; airRank = 'AIR 12,000 - 18,500'; }
+      else if (scaledMarks >= 140) { percentile = 96.80; airRank = 'AIR 28,000 - 36,000'; }
+      else if (scaledMarks >= 110) { percentile = 93.50; airRank = 'AIR 55,000 - 72,000'; }
+
+      const accuracy = (correct + incorrect) > 0 ? Math.round((correct / (correct + incorrect)) * 100) : 0;
+
+      // Update Result UI
+      const finalScoreEl = document.getElementById('nta-final-score');
+      const estPercEl = document.getElementById('nta-est-percentile');
+      const estAirEl = document.getElementById('nta-est-air');
+      const accEl = document.getElementById('nta-test-accuracy');
+      const resCorEl = document.getElementById('nta-res-correct');
+      const resIncEl = document.getElementById('nta-res-incorrect');
+      const resUnatEl = document.getElementById('nta-res-unattempted');
+
+      if (finalScoreEl) finalScoreEl.textContent = scaledMarks;
+      if (estPercEl) estPercEl.textContent = `${percentile} %ile`;
+      if (estAirEl) estAirEl.textContent = airRank;
+      if (accEl) accEl.textContent = `${accuracy}%`;
+      if (resCorEl) resCorEl.textContent = `${correct} Qs`;
+      if (resIncEl) resIncEl.textContent = `${incorrect} Qs`;
+      if (resUnatEl) resUnatEl.textContent = `${unattempted} Qs`;
+
+      if (ntaResultOverlay) ntaResultOverlay.classList.remove('hidden');
+      SoundFX.playCorrect();
+
+      // Record in StudyDesk
+      for (let c = 0; c < correct; c++) StudyDesk.recordAttempt(true);
+      for (let inc = 0; inc < incorrect; inc++) StudyDesk.recordAttempt(false);
+      showToast('🎉 Mock Test Evaluated! Official NTA Scorecard Generated.');
+    }
+  };
 
   function startExamTimer() {
     clearInterval(examCountdownInterval);
     remainingSeconds = 3 * 3600;
-    if (examTimerDisplay) examTimerDisplay.textContent = formatTimer(remainingSeconds);
+    if (examTimerDisplay) examTimerDisplay.textContent = '03:00:00';
 
     examCountdownInterval = setInterval(() => {
       if (remainingSeconds > 0) {
         remainingSeconds--;
-        if (examTimerDisplay) examTimerDisplay.textContent = formatTimer(remainingSeconds);
+        const h = String(Math.floor(remainingSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((remainingSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(remainingSeconds % 60).padStart(2, '0');
+        if (examTimerDisplay) examTimerDisplay.textContent = `${h}:${m}:${s}`;
       } else {
         clearInterval(examCountdownInterval);
-        showToast('⏰ Time is up! Exam auto-submitted.');
-        examModal?.close();
+        cbtEngine.submitExam();
       }
     }, 1000);
   }
 
-  const mockShiftQuestions = {
-    physics: {
-      tag: 'Physics • Question 1 of 25 (Single Choice • +4 / -1)',
-      prompt: 'A uniform disc of mass M and radius R is rotating with angular velocity &omega; about its central axis. A point mass m is placed gently on its edge. The new angular velocity of the system is:',
-      options: [
-        '(M / (M + 2m)) &omega;',
-        '(M / (M + m)) &omega;',
-        '(2M / (M + 2m)) &omega;',
-        '((M + 2m) / M) &omega;'
-      ]
-    },
-    chemistry: {
-      tag: 'Chemistry • Question 1 of 25 (Single Choice • +4 / -1)',
-      prompt: 'Which of the following complex ions exhibits both geometrical (cis-trans) and optical isomerism?',
-      options: [
-        '[Co(en)₂Cl₂]⁺',
-        '[Co(NH₃)₄Cl₂]⁺',
-        '[Pt(NH₃)₂Cl₂]',
-        '[Cr(en)₃]³⁺'
-      ]
-    },
-    mathematics: {
-      tag: 'Mathematics • Question 1 of 25 (Single Choice • +4 / -1)',
-      prompt: 'If the shortest distance between the skew lines (x - 1)/2 = (y + 1)/3 = z and (x + 1)/5 = (y - 2)/1 = (z - 3)/0 is d, then the value of d² is:',
-      options: [
-        '14 / 29',
-        '25 / 19',
-        '36 / 29',
-        '49 / 38'
-      ]
-    }
-  };
+  // Keypad virtual clicks for Section B Numerical inputs
+  document.querySelectorAll('.nta-virtual-keypad .key-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-key');
+      const resp = cbtEngine.getCurrentResponse();
+      let currentVal = ntaNumInput?.value || '';
 
-  function renderExamMockQuestion(secKey) {
-    const data = mockShiftQuestions[secKey];
-    if (!data) return;
+      if (key === 'clear') {
+        currentVal = '';
+      } else if (key === 'backspace') {
+        currentVal = currentVal.slice(0, -1);
+      } else {
+        if (currentVal.length < 8) currentVal += key;
+      }
 
-    const numTag = document.querySelector('.exam-q-num-tag');
-    if (numTag) numTag.textContent = data.tag;
-    if (examQPrompt) examQPrompt.innerHTML = data.prompt;
+      if (ntaNumInput) ntaNumInput.value = currentVal;
+      if (resp) resp.selected = currentVal;
+      SoundFX.playClick();
+    });
+  });
 
-    if (examOptionsContainer) {
-      examOptionsContainer.innerHTML = data.options.map((opt, i) => `
-        <div class="exam-opt-row" data-idx="${i}">
-          <span class="opt-label">${String.fromCharCode(65 + i)}</span>
-          <span>${opt}</span>
-        </div>
-      `).join('');
+  // Action Buttons
+  if (examSaveNextBtn) examSaveNextBtn.addEventListener('click', () => cbtEngine.saveAndNext());
+  if (examMarkReviewBtn) examMarkReviewBtn.addEventListener('click', () => cbtEngine.markForReviewAndNext());
+  if (examClearBtn) examClearBtn.addEventListener('click', () => cbtEngine.clearResponse());
+  if (examPrevBtn) {
+    examPrevBtn.addEventListener('click', () => {
+      if (cbtEngine.activeQIndex > 0) {
+        cbtEngine.jumpToQuestion(cbtEngine.activeQIndex - 1);
+      } else {
+        showToast('At the first question of this section.');
+      }
+    });
+  }
 
-      examOptionsContainer.querySelectorAll('.exam-opt-row').forEach(row => {
-        row.addEventListener('click', () => {
-          examOptionsContainer.querySelectorAll('.exam-opt-row').forEach(r => r.classList.remove('selected'));
-          row.classList.add('selected');
-        });
-      });
-    }
+  // Subject tabs
+  document.querySelectorAll('#nta-subject-tabs .nta-tab-btn').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const secKey = tab.getAttribute('data-exam-sec');
+      cbtEngine.switchSubject(secKey);
+    });
+  });
+
+  // Submit Paper
+  if (examSubmitBtn) examSubmitBtn.addEventListener('click', () => cbtEngine.submitExam());
+
+  // Result overlay actions
+  if (ntaCloseResultBtn) {
+    ntaCloseResultBtn.addEventListener('click', () => {
+      examModal?.close();
+      if (ntaResultOverlay) ntaResultOverlay.classList.add('hidden');
+    });
+  }
+
+  if (ntaReviewSolutionsBtn) {
+    ntaReviewSolutionsBtn.addEventListener('click', () => {
+      cbtEngine.reviewMode = true;
+      if (ntaResultOverlay) ntaResultOverlay.classList.add('hidden');
+      cbtEngine.renderQuestion();
+      showToast('📖 Review Mode Activated: All verified step solutions visible.');
+    });
+  }
+
+  // Launching the NTA Mock Test
+  function openNtaCbtMock(examName = 'JEE (Main) 2027 Official Simulation Test') {
+    if (examModalTitle) examModalTitle.textContent = examName;
+    cbtEngine.init();
+    cbtEngine.renderQuestion();
+    startExamTimer();
+    examModal?.showModal();
+    SoundFX.playClick();
   }
 
   document.querySelectorAll('.take-mock-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const examName = btn.getAttribute('data-exam-name');
-      if (examModalTitle) examModalTitle.textContent = examName;
-      renderExamMockQuestion('physics');
-      examSubjectTabs.forEach(t => t.classList.remove('active'));
-      document.querySelector('[data-exam-sec="physics"]')?.classList.add('active');
-
-      startExamTimer();
-      examModal?.showModal();
+      const name = btn.getAttribute('data-exam-name') || 'JEE Main Official Shift Paper';
+      openNtaCbtMock(name);
     });
   });
 
-  examSubjectTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      examSubjectTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const secKey = tab.getAttribute('data-exam-sec');
-      renderExamMockQuestion(secKey);
-    });
-  });
+  const navLaunchCbtBtn = document.getElementById('nav-launch-cbt-btn');
+  if (navLaunchCbtBtn) navLaunchCbtBtn.addEventListener('click', () => openNtaCbtMock());
+
+  const deskOpenMockBtn = document.getElementById('desk-open-mock-btn');
+  if (deskOpenMockBtn) deskOpenMockBtn.addEventListener('click', () => openNtaCbtMock());
 
   if (closeExamModalBtn && examModal) {
     closeExamModalBtn.addEventListener('click', () => {
@@ -2139,24 +2675,95 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (examClearBtn) {
-    examClearBtn.addEventListener('click', () => {
-      examOptionsContainer?.querySelectorAll('.exam-opt-row').forEach(r => r.classList.remove('selected'));
-      showToast('Response cleared for this question.');
+  // Bookmark current CBT question
+  const ntaBmCurrentBtn = document.getElementById('nta-bookmark-current-btn');
+  if (ntaBmCurrentBtn) {
+    ntaBmCurrentBtn.addEventListener('click', () => {
+      const q = cbtEngine.getCurrentQ();
+      if (q) {
+        StudyDesk.toggleBookmark(q);
+        SoundFX.playCorrect();
+      }
     });
   }
 
-  if (examSaveNextBtn) {
-    examSaveNextBtn.addEventListener('click', () => {
-      showToast('Response saved! Navigating to next item.');
+  // =========================================================================
+  // REVISION BOOKMARKS DRAWER MANAGEMENT
+  // =========================================================================
+  const bookmarksDrawer = document.getElementById('bookmarks-drawer');
+  const closeBookmarksBtn = document.getElementById('close-bookmarks-btn');
+  const doneBookmarksBtn = document.getElementById('done-bookmarks-btn');
+  const clearAllBookmarksBtn = document.getElementById('clear-all-bookmarks-btn');
+  const bookmarksListContainer = document.getElementById('bookmarks-list-container');
+  const deskOpenBookmarksBtn = document.getElementById('desk-open-bookmarks-btn');
+
+  function renderBookmarksList() {
+    const data = StudyDesk.getStats();
+    const list = data.bookmarks || [];
+    if (!bookmarksListContainer) return;
+
+    if (list.length === 0) {
+      bookmarksListContainer.innerHTML = `
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+          <div style="font-size: 2.4rem; margin-bottom: 12px;">⭐</div>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 6px;">No Saved Bookmarks Yet</h4>
+          <p style="font-size: 0.88rem;">Click the ⭐ Bookmark button on any question in the chapter explorer or NTA Mock Test to save tricky problems for revision.</p>
+        </div>
+      `;
+      return;
+    }
+
+    bookmarksListContainer.innerHTML = list.map((b, i) => `
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-phys);">Saved Problem #${i + 1}</span>
+          <button class="remove-single-bm-btn" data-idx="${i}" style="background: transparent; border: none; color: #ef4444; font-size: 0.8rem; cursor: pointer;">✕ Remove</button>
+        </div>
+        <div style="font-size: 0.95rem; line-height: 1.6; color: var(--text-primary); margin-bottom: 10px;">
+          ${b.question}
+        </div>
+        ${b.solution ? `
+          <div style="font-size: 0.85rem; color: var(--text-secondary); background: var(--bg-surface-elevated); padding: 10px; border-radius: 4px;">
+            <strong style="color: #38bdf8;">Verified Solution:</strong> ${b.solution}
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+
+    bookmarksListContainer.querySelectorAll('.remove-single-bm-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-idx'), 10);
+        const curData = StudyDesk.getStats();
+        curData.bookmarks.splice(idx, 1);
+        StudyDesk.saveStats(curData);
+        renderBookmarksList();
+        SoundFX.playClick();
+      });
+    });
+
+    renderAllMath(bookmarksListContainer);
+  }
+
+  if (deskOpenBookmarksBtn) {
+    deskOpenBookmarksBtn.addEventListener('click', () => {
+      renderBookmarksList();
+      bookmarksDrawer?.showModal();
+      SoundFX.playClick();
     });
   }
 
-  if (examSubmitBtn) {
-    examSubmitBtn.addEventListener('click', () => {
-      clearInterval(examCountdownInterval);
-      examModal?.close();
-      showToast('🎉 Mock Test Submitted! Verified solutions and answer keys unlocked.');
+  if (closeBookmarksBtn) closeBookmarksBtn.addEventListener('click', () => bookmarksDrawer?.close());
+  if (doneBookmarksBtn) doneBookmarksBtn.addEventListener('click', () => bookmarksDrawer?.close());
+
+  if (clearAllBookmarksBtn) {
+    clearAllBookmarksBtn.addEventListener('click', () => {
+      if (confirm('Clear all saved revision bookmarks?')) {
+        const curData = StudyDesk.getStats();
+        curData.bookmarks = [];
+        StudyDesk.saveStats(curData);
+        renderBookmarksList();
+        showToast('All bookmarks cleared.');
+      }
     });
   }
 
