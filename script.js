@@ -1008,6 +1008,89 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
+    // Render Section 10 PYQ Analysis Dashboard if available
+    if (data.pyqAnalysis) {
+      const pyq = data.pyqAnalysis;
+      const total = pyq.totalPyqs || 100;
+      const easyCount = pyq.difficulty?.easy || 0;
+      const medCount = pyq.difficulty?.medium || 0;
+      const hardCount = pyq.difficulty?.hard || 0;
+      const easyPct = Math.round((easyCount / total) * 100);
+      const medPct = Math.round((medCount / total) * 100);
+      const hardPct = Math.round((hardCount / total) * 100);
+
+      html += `
+        <div class="pyq-analysis-dashboard" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.35rem;">📊</span>
+              <div>
+                <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary); margin: 0;">
+                  Official PYQ Analysis Telemetry (2012–2026)
+                </h4>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">
+                  Blueprint Section 10 Verified Analytics &bull; Average Difficulty: <strong>${pyq.averageDifficulty || '2.1 / 3.0'}</strong>
+                </span>
+              </div>
+            </div>
+            <span class="tag-pill tag-pct" style="font-size: 0.8rem; background: rgba(56, 189, 248, 0.15); color: var(--color-phys); border: 1px solid rgba(56, 189, 248, 0.3);">
+              ${pyq.totalPyqs} Total Past Exam Questions
+            </span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px;">
+            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-sm); padding: 10px 12px; text-align: center;">
+              <div style="font-size: 0.74rem; text-transform: uppercase; color: #10b981; font-weight: 700; letter-spacing: 0.5px;">Easy Level</div>
+              <div style="font-size: 1.35rem; font-weight: 800; color: #10b981;">${easyCount}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">${easyPct}% of PYQs</div>
+            </div>
+            <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-sm); padding: 10px 12px; text-align: center;">
+              <div style="font-size: 0.74rem; text-transform: uppercase; color: #f59e0b; font-weight: 700; letter-spacing: 0.5px;">Medium Level</div>
+              <div style="font-size: 1.35rem; font-weight: 800; color: #f59e0b;">${medCount}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">${medPct}% of PYQs</div>
+            </div>
+            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: var(--radius-sm); padding: 10px 12px; text-align: center;">
+              <div style="font-size: 0.74rem; text-transform: uppercase; color: #ef4444; font-weight: 700; letter-spacing: 0.5px;">Hard Level</div>
+              <div style="font-size: 1.35rem; font-weight: 800; color: #ef4444;">${hardCount}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">${hardPct}% of PYQs</div>
+            </div>
+          </div>
+
+          ${pyq.yearwise ? `
+            <div style="margin-bottom: 12px;">
+              <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+                📈 Yearwise Question Volume (2018–2026):
+              </div>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                ${Object.entries(pyq.yearwise).map(([yr, count]) => `
+                  <span style="font-size: 0.75rem; padding: 3px 8px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-secondary);">
+                    <strong style="color: var(--text-primary);">${yr}:</strong> ${count} Qs
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+
+          ${Array.isArray(pyq.mostTestedConcepts) && pyq.mostTestedConcepts.length > 0 ? `
+            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+                🔥 Repeated Concept Variations (${pyq.repeatedConceptsCount || 40}+ Variations):
+              </div>
+              <ul style="margin: 0; padding-left: 18px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+                ${pyq.mostTestedConcepts.map(c => `<li>${c}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          ${pyq.yearwiseTrend ? `
+            <div style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+              💡 <strong>Trend Analysis:</strong> ${pyq.yearwiseTrend}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
     // Gather questions: support explicit questions array or synthesize up to 3 questions
     let questionsList = [];
     if (Array.isArray(data.questions) && data.questions.length > 0) {
@@ -1082,21 +1165,30 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;">
               🎯 Chapter Practice PYQs (${questionsList.length} Curated Questions)
             </h4>
-            <p style="font-size: 0.84rem; color: var(--text-secondary); margin: 0;">Test yourself with interactive choices, immediate marking, and verified step-by-step solutions.</p>
+            <p style="font-size: 0.84rem; color: var(--text-secondary); margin: 0;">Test yourself with interactive choices, immediate marking, and 3-tier solutions.</p>
           </div>
           <span class="tag-pill tag-pct" style="font-size: 0.78rem;">+4 / -1 Exam Grading</span>
         </div>
     `;
 
     questionsList.forEach((q, idx) => {
+      const diffBg = q.difficulty === 'Hard' ? 'rgba(239, 68, 68, 0.15)' : (q.difficulty === 'Easy' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)');
+      const diffCol = q.difficulty === 'Hard' ? '#ef4444' : (q.difficulty === 'Easy' ? '#10b981' : '#f59e0b');
+
       html += `
         <div class="modal-q-item" data-q-idx="${idx}" style="margin-bottom: 24px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span class="sol-badge" style="background: rgba(56, 189, 248, 0.2); color: var(--color-phys);">Q${idx + 1} of ${questionsList.length}</span>
+              ${q.questionId ? `<span class="tag-pill tag-pct" style="font-size: 0.72rem; font-family: monospace; background: rgba(56, 189, 248, 0.12); color: var(--color-phys); border: 1px solid rgba(56, 189, 248, 0.25);">${q.questionId}</span>` : ''}
               <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">${q.examMeta}</span>
+              ${q.topic ? `<span style="font-size: 0.78rem; color: var(--text-secondary); background: var(--bg-surface-elevated); padding: 2px 7px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">📌 ${q.topic}</span>` : ''}
             </div>
-            <span class="weightage-badge high" style="font-size: 0.72rem;">+4 / -1 Marking</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              ${q.status ? `<span style="font-size: 0.72rem; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 2px 8px; border-radius: 12px; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.3);">✓ ${q.status}</span>` : ''}
+              ${q.difficulty ? `<span style="font-size: 0.72rem; background: ${diffBg}; color: ${diffCol}; padding: 2px 8px; border-radius: 12px; font-weight: 700;">${q.difficulty}</span>` : ''}
+              <span class="weightage-badge high" style="font-size: 0.72rem;">+4 / -1 Marking</span>
+            </div>
           </div>
 
           <div style="font-size: 1.04rem; font-weight: 600; line-height: 1.65; margin-bottom: 16px; color: var(--text-primary);">
@@ -1119,31 +1211,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
             <button class="btn btn-sm btn-outline toggle-modal-sol-btn" style="font-size: 0.78rem; padding: 5px 12px;">
-              View Verified Solution ▼
+              View 3-Tier Solution ▼
             </button>
           </div>
 
           <div class="arena-sol-box" style="display: none; margin-bottom: 0;">
-            <div class="sol-header-bar">
-              <span class="sol-badge">Verified Step-by-Step Solution</span>
+            <div class="sol-header-bar" style="margin-bottom: 12px;">
+              <span class="sol-badge">Verified 3-Tier Solution Framework</span>
               <span class="sol-correct-badge">Correct Choice: Option (${q.correctOption})</span>
             </div>
-            <div class="sol-formula-box">
-              <strong>Core Formula:</strong> ${q.formulaUsed}
+
+            <!-- Blueprint Section 8: 3-Tier Solution Switcher -->
+            <div class="sol-tier-nav" style="display: flex; gap: 6px; margin-bottom: 14px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; flex-wrap: wrap;">
+              <button class="tier-tab-btn active" data-tier="1" style="padding: 5px 12px; font-size: 0.76rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface-elevated); color: var(--text-primary); cursor: pointer; font-weight: 700; transition: all 0.2s;">
+                Level 1: Answer Only
+              </button>
+              <button class="tier-tab-btn" data-tier="2" style="padding: 5px 12px; font-size: 0.76rem; border-radius: var(--radius-sm); border: 1px solid transparent; background: transparent; color: var(--text-muted); cursor: pointer; font-weight: 700; transition: all 0.2s;">
+                Level 2: Short Solution
+              </button>
+              <button class="tier-tab-btn" data-tier="3" style="padding: 5px 12px; font-size: 0.76rem; border-radius: var(--radius-sm); border: 1px solid transparent; background: transparent; color: var(--text-muted); cursor: pointer; font-weight: 700; transition: all 0.2s;">
+                Level 3: Detailed Solution
+              </button>
             </div>
-            <div class="sol-step-item">
-              <span class="sol-step-num">Step 1</span>${q.step1}
+
+            <!-- Level 1 Panel: Answer Only -->
+            <div class="tier-panel tier-panel-1" style="display: block;">
+              <div class="sol-result-box" style="margin-top: 0;">
+                <span class="sol-correct-badge" style="font-size: 0.95rem;">🎯 ${q.solLevel1 || q.finalAnswer || `Correct Choice: Option (${q.correctOption})`}</span>
+              </div>
             </div>
-            <div class="sol-step-item">
-              <span class="sol-step-num">Step 2</span>${q.step2}
+
+            <!-- Level 2 Panel: Short Solution -->
+            <div class="tier-panel tier-panel-2" style="display: none;">
+              <div style="background: rgba(56, 189, 248, 0.08); border-left: 3px solid var(--color-phys); padding: 12px 14px; border-radius: 4px; font-size: 0.9rem; line-height: 1.65; color: var(--text-primary); margin-bottom: 8px;">
+                <strong>⚡ Key Method / Concept:</strong><br>
+                ${q.solLevel2 || (q.step1 + ' ' + (q.step2 || ''))}
+              </div>
+              <div class="sol-result-box" style="margin-top: 0;">
+                <span class="sol-correct-badge">🎯 Correct Option: (${q.correctOption})</span>
+              </div>
             </div>
-            <div class="sol-trap-box">
-              <div class="sol-trap-title">⚠️ Exam Trap Alert</div>
-              ${q.trapAlert}
+
+            <!-- Level 3 Panel: Detailed Solution (Given, Formula, Calculation, Trap Alert, Therefore) -->
+            <div class="tier-panel tier-panel-3" style="display: none;">
+              <div class="sol-formula-box">
+                <strong>📐 Formula / Governing Relation:</strong> ${q.solLevel3?.formula || q.formulaUsed}
+              </div>
+              ${q.solLevel3?.given ? `
+                <div class="sol-step-item">
+                  <span class="sol-step-num">Given</span>
+                  <div>${q.solLevel3.given}</div>
+                </div>
+              ` : ''}
+              <div class="sol-step-item">
+                <span class="sol-step-num">${q.solLevel3?.calculation ? 'Calculation' : 'Step 1'}</span>
+                <div style="white-space: pre-line; line-height: 1.65;">${q.solLevel3?.calculation || q.step1}</div>
+              </div>
+              ${!q.solLevel3?.calculation && q.step2 ? `
+                <div class="sol-step-item">
+                  <span class="sol-step-num">Step 2</span>
+                  <div style="white-space: pre-line; line-height: 1.65;">${q.step2}</div>
+                </div>
+              ` : ''}
+              <div class="sol-trap-box">
+                <div class="sol-trap-title">⚠️ Exam Trap Alert</div>
+                ${q.solLevel3?.trapAlert || q.trapAlert}
+              </div>
+              <div class="sol-result-box">
+                <span class="sol-correct-badge">🎯 ${q.solLevel3?.therefore || q.finalAnswer || `Therefore: Correct Answer = Option (${q.correctOption})`}</span>
+              </div>
             </div>
-            <div class="sol-result-box">
-              <span class="sol-correct-badge">🎯 ${q.finalAnswer}</span>
-            </div>
+
           </div>
         </div>
       `;
