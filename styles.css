@@ -4610,8 +4610,8 @@ body {
    Live Top Announcement Bar & Bulletin Ticker
    ========================================================================== */
 .top-announcement-bar {
-  background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+  background: linear-gradient(90deg, #150d06 0%, #1c1108 50%, #150d06 100%);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.25);
   font-size: 0.8rem;
   padding: 6px 0;
   width: 100%;
