@@ -1610,8 +1610,36 @@ document.addEventListener('DOMContentLoaded', () => {
           if (solBox) {
             const isHidden = solBox.style.display === 'none' || !solBox.style.display;
             solBox.style.display = isHidden ? 'block' : 'none';
-            tBtn.textContent = isHidden ? 'Hide Solution ▲' : 'View Verified Solution ▼';
+            tBtn.textContent = isHidden ? 'Hide Solution ▲' : 'View 3-Tier Solution ▼';
           }
+        });
+      });
+
+      // Bind 3-tier solution level switcher tabs in modal
+      modalContent.querySelectorAll('.tier-tab-btn').forEach(tabBtn => {
+        tabBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const nav = tabBtn.closest('.sol-tier-nav');
+          const solBox = tabBtn.closest('.arena-sol-box');
+          if (!nav || !solBox) return;
+          const targetTier = tabBtn.getAttribute('data-tier');
+
+          nav.querySelectorAll('.tier-tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.borderColor = 'transparent';
+            b.style.background = 'transparent';
+            b.style.color = 'var(--text-muted)';
+          });
+          tabBtn.classList.add('active');
+          tabBtn.style.borderColor = 'var(--border-subtle)';
+          tabBtn.style.background = 'var(--bg-surface-elevated)';
+          tabBtn.style.color = 'var(--text-primary)';
+
+          solBox.querySelectorAll('.tier-panel').forEach(panel => {
+            panel.style.display = 'none';
+          });
+          const activePanel = solBox.querySelector(`.tier-panel-${targetTier}`);
+          if (activePanel) activePanel.style.display = 'block';
         });
       });
 
