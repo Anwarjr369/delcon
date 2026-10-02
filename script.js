@@ -2695,6 +2695,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLaunchCbtBtn = document.getElementById('nav-launch-cbt-btn');
   if (navLaunchCbtBtn) navLaunchCbtBtn.addEventListener('click', () => openNtaCbtMock());
 
+  const heroLaunchCbtBtn = document.getElementById('hero-launch-cbt-btn');
+  if (heroLaunchCbtBtn) heroLaunchCbtBtn.addEventListener('click', () => openNtaCbtMock());
+
+  const hubCenterCore = document.getElementById('hub-center-core');
+  if (hubCenterCore) hubCenterCore.addEventListener('click', () => openNtaCbtMock());
+
   const deskOpenMockBtn = document.getElementById('desk-open-mock-btn');
   if (deskOpenMockBtn) deskOpenMockBtn.addEventListener('click', () => openNtaCbtMock());
 
