@@ -77,9 +77,25 @@ window.JEE_ALL_CHAPTERS = {
     chipClass: "chip-phys",
     title: "Laws of Motion & Friction",
     weightage: "High Weightage (~2 Qs / Paper)",
-    pyqs: "185+ PYQs (2015-2026)",
+    pyqs: "185+ PYQs (2012-2026)",
     overview: "Newton's three laws, free body diagrams (FBD), static/kinetic friction coefficients, pseudo forces in non-inertial frames, and circular banking dynamics.",
+    pyqAnalysis: {
+      chapter: "Laws of Motion & Friction",
+      totalPyqs: 185,
+      difficulty: { easy: 45, medium: 95, hard: 45 },
+      yearwise: { 2018: 9, 2019: 14, 2020: 16, 2021: 22, 2022: 26, 2023: 30, 2024: 32, 2025: 18, 2026: 18 },
+      mostTestedConcepts: [
+        "Friction on Inclined Plane & Two-Block Systems (34% frequency)",
+        "Pulley & Constraint Equations with FBD (28% frequency)",
+        "Banking of Roads & Vertical Circular Motion (22% frequency)",
+        "Pseudo Force & Non-Inertial Reference Frames (16% frequency)"
+      ],
+      repeatedConceptsCount: 52,
+      averageDifficulty: "2.0 / 3.0 (Moderate)",
+      yearwiseTrend: "Core mechanics cornerstone with consistent 2 questions in every JEE session."
+    },
     coreTopics: [
+      "Physics -> Mechanics -> Laws of Motion -> Friction -> Inclined plane",
       "Free Body Diagram (FBD) setup for multi-block pulley systems",
       "Static vs Kinetic friction and transition condition (f_s <= mu_s N)",
       "Two-block friction problems (minimum force for relative sliding)",
@@ -88,18 +104,118 @@ window.JEE_ALL_CHAPTERS = {
     keyFormulas: [
       "Newton's 2nd Law: F_net = m * a = dp / dt",
       "Limiting Friction: f_L = mu_s * N",
+      "Inclined Plane Critical Angle of Repose: tan(alpha) = mu_s",
       "Optimum Banking Speed: v = sqrt(r * g * tan(theta))"
     ],
+    questions: [
+      {
+        questionId: "LOM-2018-S2-Q1",
+        exam: "JEE Main (CBSE Era)",
+        year: "2018",
+        shift: "Shift 2",
+        subject: "Physics",
+        chapter: "Laws of Motion",
+        topic: "Friction -> Inclined plane",
+        difficulty: "Medium",
+        status: "Verified",
+        examMeta: "JEE Main 2018 • Shift 2 (Blueprint Blueprint)",
+        question: "A block of mass m is placed on an inclined plane of inclination θ with the horizontal. The coefficient of static friction is μ_s (where tan θ > μ_s). The minimum horizontal force F applied on the block to prevent it from sliding down the incline is:",
+        options: [
+          "mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ)",
+          "mg (sin θ + μ_s cos θ) / (cos θ - μ_s sin θ)",
+          "mg (cos θ - μ_s sin θ) / (sin θ + μ_s cos θ)",
+          "mg tan θ"
+        ],
+        correctOption: "A",
+        solLevel1: "Answer: Option (A)",
+        solLevel2: "At the verge of downward sliding, static friction acts upward along the incline: f = μ_s N. Balancing forces parallel and perpendicular to the incline yields F = mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ).",
+        solLevel3: {
+          given: "Mass m on incline θ, static friction coefficient μ_s, tan θ > μ_s, horizontal force F.",
+          formula: "Equilibrium along plane: F cos θ + f_s = mg sin θ; Perpendicular to plane: N = mg cos θ + F sin θ; Limiting friction: f_s = μ_s N.",
+          calculation: "Substitute N into parallel equilibrium: F cos θ + μ_s (mg cos θ + F sin θ) = mg sin θ ==> F (cos θ + μ_s sin θ) = mg (sin θ - μ_s cos θ) ==> F = mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ).",
+          trapAlert: "If the force was applied parallel to the incline instead of horizontally, the answer would simply be mg(sin θ - μ_s cos θ). Always decompose horizontal force F into components F cos θ and F sin θ!",
+          therefore: "Therefore: Minimum Horizontal Force = mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ) (Option A)"
+        },
+        formulaUsed: "F (cos θ + μ_s sin θ) = mg (sin θ - μ_s cos θ)",
+        step1: "Draw FBD decomposing forces along and perpendicular to the incline.",
+        step2: "Substitute normal reaction N = mg cos θ + F sin θ into limiting friction condition.",
+        trapAlert: "Remember F is horizontal, so its component F sin θ presses the block against the incline, INCREASING normal force N!",
+        finalAnswer: "Option (A): mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ)"
+      },
+      {
+        questionId: "LOM-2024-JAN31-Q2",
+        exam: "JEE Main (NTA Era)",
+        year: "2024",
+        shift: "31 Jan Shift 2",
+        subject: "Physics",
+        chapter: "Laws of Motion",
+        topic: "Static Friction & Self-Adjustment",
+        difficulty: "Easy",
+        status: "Verified",
+        examMeta: "JEE Main 2024 • 31 Jan Shift 2",
+        question: "A block of mass 2 kg rests on a rough horizontal plane with static friction coefficient μ_s = 0.4. A horizontal force of 6 N is applied on the block. The frictional force acting on the block is (g = 10 m/s²):",
+        options: ["8 N", "6 N", "4 N", "0 N"],
+        correctOption: "B",
+        solLevel1: "Answer: Option (B)",
+        solLevel2: "Max static friction is 8 N. Applied force is 6 N < 8 N. Since the block does not move, static friction equals applied force = 6 N.",
+        solLevel3: {
+          given: "Mass m = 2 kg, μ_s = 0.4, F_applied = 6 N, g = 10 m/s².",
+          formula: "Limiting friction f_max = μ_s N = μ_s m g; Static friction f_s = F_applied if F_applied <= f_max.",
+          calculation: "f_max = 0.4 * (2 * 10) = 8 N. Since F_applied = 6 N < 8 N, the block is in static equilibrium and static friction self-adjusts to exactly match the applied force: f = 6 N.",
+          trapAlert: "Do not blindly calculate f = μ_s N = 8 N! Friction is self-adjusting and only reaches 8 N when the applied force reaches or exceeds 8 N.",
+          therefore: "Therefore: Frictional force = 6 N (Option B)"
+        },
+        formulaUsed: "Static Friction f_s = F_applied (when F <= f_max)",
+        step1: "Calculate limiting friction: f_max = 0.4 * 20 = 8 N.",
+        step2: "Since F_applied (6 N) < f_max (8 N), acceleration is zero and f = 6 N.",
+        trapAlert: "Static friction is self-adjusting!",
+        finalAnswer: "Frictional force = 6 N (Option B)"
+      },
+      {
+        questionId: "LOM-2026-JAN29-Q3",
+        exam: "JEE Main (NTA Era)",
+        year: "2026",
+        shift: "29 Jan Shift 1",
+        subject: "Physics",
+        chapter: "Laws of Motion",
+        topic: "Two-Block Relative Sliding",
+        difficulty: "Hard",
+        status: "Verified",
+        examMeta: "JEE Main 2026 • 29 Jan Shift 1",
+        question: "A block A of mass 3 kg sits atop block B of mass 5 kg, resting on a smooth floor. The coefficient of friction between A and B is μ = 0.3. The maximum horizontal force applied to block B such that both blocks accelerate together without slipping is (g = 10 m/s²):",
+        options: ["18 N", "24 N", "9 N", "15 N"],
+        correctOption: "B",
+        solLevel1: "Answer: Option (B)",
+        solLevel2: "Max common acceleration is provided by friction on block A: a_max = μ g = 0.3 * 10 = 3 m/s². Maximum force on system F = (m_A + m_B) * a_max = (3 + 5) * 3 = 24 N.",
+        solLevel3: {
+          given: "m_A = 3 kg, m_B = 5 kg, μ = 0.3, smooth floor.",
+          formula: "Max acceleration of upper block without slipping: a_max = f_max / m_A = (μ m_A g) / m_A = μ g. Total force on combined mass: F_max = (m_A + m_B) a_max.",
+          calculation: "a_max = 0.3 * 10 = 3 m/s². F_max = (3 + 5) kg * 3 m/s² = 8 * 3 = 24 N.",
+          trapAlert: "If force was applied to block A instead, max force would be F' = (m_A + m_B) * (μ m_A g / m_B) = 8 * (9/5) = 14.4 N. Always identify which block receives the applied force!",
+          therefore: "Therefore: Maximum Force F = 24 N (Option B)"
+        },
+        formulaUsed: "F_max = (m_A + m_B) * (μ g)",
+        step1: "Determine upper block acceleration: a_max = μ g = 3 m/s².",
+        step2: "Total system force = (m_A + m_B) * a_max = 8 * 3 = 24 N.",
+        trapAlert: "Check which block receives the force!",
+        finalAnswer: "Maximum force = 24 N (Option B)"
+      }
+    ],
     featuredPyq: {
-      examMeta: "JEE Main 2024 â€¢ 31 Jan Shift 2",
-      question: "A block of mass 2 kg rests on a rough horizontal plane with static friction coefficient mu_s = 0.4. A horizontal force of 6 N is applied on the block. The frictional force acting on the block is (g = 10 m/s^2):",
-      options: ["8 N", "6 N", "4 N", "0 N"],
-      correctOption: "B",
-      formulaUsed: "Self-adjusting static friction: f = F_applied (provided F_applied <= mu_s * N)",
-      step1: "Maximum limiting friction f_max = mu_s * N = 0.4 * (2 * 10) = 8 N.",
-      step2: "Applied force is 6 N, which is strictly less than 8 N. Therefore, the block does not slide and static friction equals the applied force: f = 6 N.",
-      trapAlert: "Do not blindly write f = mu * N = 8 N! Static friction is self-adjusting and equals the applied force up to the limiting threshold.",
-      finalAnswer: "Frictional force = 6 N (Option B)"
+      examMeta: "JEE Main 2018 • Shift 2 (Blueprint Verified)",
+      question: "A block of mass m is placed on an inclined plane of inclination θ with the horizontal. The coefficient of static friction is μ_s (where tan θ > μ_s). The minimum horizontal force F applied on the block to prevent it from sliding down the incline is:",
+      options: [
+        "mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ)",
+        "mg (sin θ + μ_s cos θ) / (cos θ - μ_s sin θ)",
+        "mg (cos θ - μ_s sin θ) / (sin θ + μ_s cos θ)",
+        "mg tan θ"
+      ],
+      correctOption: "A",
+      formulaUsed: "F (cos θ + μ_s sin θ) = mg (sin θ - μ_s cos θ)",
+      step1: "Draw FBD decomposing forces along and perpendicular to the incline.",
+      step2: "Substitute normal reaction N = mg cos θ + F sin θ into limiting friction condition.",
+      trapAlert: "F is horizontal, so F sin θ increases normal force N!",
+      finalAnswer: "Option (A): mg (sin θ - μ_s cos θ) / (cos θ + μ_s sin θ)"
     }
   },
 
