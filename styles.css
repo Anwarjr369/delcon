@@ -483,11 +483,437 @@ body {
 }
 
 /* ==========================================================================
-   Hero Section & Search Bar
+   Hero Section & Neural Entrance Hub (Pinterest Gcore Dark Tech Style)
    ========================================================================== */
 .hero-section {
-  padding-top: 36px;
-  padding-bottom: 52px;
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 72px;
+  overflow: hidden;
+}
+
+.hero-ambient-flare {
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 760px;
+  height: 640px;
+  background: radial-gradient(circle at 65% 35%, rgba(249, 115, 22, 0.24) 0%, rgba(234, 88, 12, 0.08) 38%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-container-centered {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gcore-badge-wrapper {
+  margin-bottom: 22px;
+}
+
+.gcore-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: var(--radius-full);
+  background: rgba(249, 115, 22, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: #fdba74;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.15);
+}
+
+.gcore-star {
+  color: var(--accent-amber);
+  animation: spin-subtle 8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin-subtle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.gcore-hero-title {
+  font-size: clamp(2.3rem, 4.6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+  color: #f8fafc;
+  max-width: 960px;
+  text-align: center;
+}
+
+.gcore-gradient-text {
+  background: linear-gradient(135deg, #fdba74 0%, #fb923c 40%, #f97316 70%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(249, 115, 22, 0.4));
+}
+
+.gcore-hero-desc {
+  font-size: 1.14rem;
+  color: #94a3b8;
+  max-width: 760px;
+  margin: 0 auto 32px auto;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.gcore-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.btn-gcore-primary {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 13px 30px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.55), 0 4px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn-gcore-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 45px rgba(249, 115, 22, 0.75), 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gcore-secondary {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e2e8f0;
+  font-weight: 700;
+  font-size: 0.96rem;
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-gcore-secondary:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(249, 115, 22, 0.4);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+/* ==========================================================================
+   DELCON Neural Entrance Hub (Pinterest Gcore Circuit Architecture)
+   ========================================================================== */
+.delcon-neural-hub {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 16px auto 44px auto;
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, rgba(234, 88, 12, 0.12) 42%, transparent 75%);
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hub-center-core {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.core-chip-box {
+  width: 118px;
+  height: 118px;
+  background: linear-gradient(145deg, #1e293b, #07090e);
+  border: 2px solid var(--accent-amber);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 35px rgba(249, 115, 22, 0.5),
+    inset 0 0 20px rgba(249, 115, 22, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 3;
+}
+
+.core-chip-box:hover {
+  transform: scale(1.08);
+  box-shadow: 
+    0 0 55px rgba(249, 115, 22, 0.8),
+    inset 0 0 25px rgba(249, 115, 22, 0.5);
+}
+
+.core-icon {
+  font-size: 2.2rem;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
+}
+
+.core-title {
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+.core-sub {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: #fdba74;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.core-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(249, 115, 22, 0.45);
+  pointer-events: none;
+  animation: core-pulse 3.5s infinite ease-out;
+}
+
+.core-ring-1 {
+  width: 145px;
+  height: 145px;
+  animation-delay: 0s;
+}
+
+.core-ring-2 {
+  width: 195px;
+  height: 195px;
+  animation-delay: 1.75s;
+}
+
+@keyframes core-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.8; }
+  50% { opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+.hub-circuit-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.circuit-track {
+  stroke: rgba(249, 115, 22, 0.45);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  fill: none;
+  animation: circuit-flow 18s linear infinite;
+}
+
+.circuit-dot {
+  fill: #f97316;
+  filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.8));
+}
+
+@keyframes circuit-flow {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.hub-nodes-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hub-node-card {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 18px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 270px;
+}
+
+.hub-node-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-amber);
+  background: rgba(30, 41, 59, 0.95);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(249, 115, 22, 0.35);
+}
+
+.hub-node-card .node-icon {
+  font-size: 1.6rem;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  flex-shrink: 0;
+}
+
+.hub-node-card .node-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.hub-node-card .node-text strong {
+  font-size: 0.94rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.hub-node-card .node-text span {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.hub-node-card .node-arrow {
+  color: var(--accent-amber);
+  font-size: 1.1rem;
+  font-weight: 800;
+  transition: transform 0.2s;
+}
+
+.hub-node-card:hover .node-arrow {
+  transform: translateX(4px);
+}
+
+.node-top-left {
+  top: 15px;
+  left: 10px;
+}
+
+.node-bottom-left {
+  bottom: 15px;
+  left: 10px;
+}
+
+.node-top-right {
+  top: 15px;
+  right: 10px;
+}
+
+.node-bottom-right {
+  bottom: 15px;
+  right: 10px;
+}
+
+@media (max-width: 900px) {
+  .delcon-neural-hub {
+    min-height: auto;
+    flex-direction: column;
+    gap: 28px;
+    margin: 30px 0;
+  }
+  .hub-circuit-svg {
+    display: none;
+  }
+  .hub-nodes-grid {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    width: 100%;
+  }
+  .hub-node-card {
+    position: static;
+    width: 100%;
+  }
+}
+
+/* Lower Hero Grid */
+.hero-lower-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.hero-search-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-demo-col {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero-lower-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 .hero-grid {
