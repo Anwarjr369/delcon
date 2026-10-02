@@ -2508,22 +2508,24 @@ body {
 }
 
 .practice-mode-card:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(249, 115, 22, 0.45);
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 16px rgba(249, 115, 22, 0.15);
 }
 
 [data-theme="light"] .practice-mode-card:hover {
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.08);
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.12);
 }
 
 .mode-icon-box {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(59, 130, 246, 0.12);
-  color: #60a5fa;
+  background: rgba(249, 115, 22, 0.14);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: var(--accent-amber-light);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
