@@ -44,7 +44,9 @@
 
   /* Layout & Sizing */
   --container-max: 1260px;
-  --header-height: 70px;
+  --announcement-height: 38px;
+  --navbar-height: 68px;
+  --header-height: 106px;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 18px;
