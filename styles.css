@@ -3233,25 +3233,16 @@ body {
 }
 
 /* ==========================================================================
-   14. Exam Stream Switcher Bar (Strict Separation: JEE Main, Adv, NEET)
+   14. Exam Stream Switcher Bar & Ticker Overrides
    ========================================================================== */
-.exam-stream-bar {
-  position: sticky;
-  margin-top: var(--header-height);
-  top: var(--header-height);
-  z-index: 95;
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 0;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-  transition: all var(--trans-normal);
+.exam-stream-bar,
+.top-announcement-bar {
+  display: none !important;
 }
 
-[data-theme="light"] .exam-stream-bar {
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+#main-content {
+  margin-top: var(--header-height);
+  position: relative;
 }
 
 .stream-bar-inner {
