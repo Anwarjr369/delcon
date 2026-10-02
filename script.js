@@ -268,10 +268,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const isCorrect = (selectedChoice === 'A');
       if (isCorrect) {
         opt.classList.add('correct-choice');
+        SoundFX.playCorrect();
+        StudyDesk.recordAttempt(true);
         showToast('🎯 Correct! Option (A) is the right answer.');
       } else {
-        // Highlight correct option A
         document.querySelector('.demo-option[data-option="A"]')?.classList.add('correct-choice');
+        SoundFX.playIncorrect();
+        StudyDesk.recordAttempt(false);
         showToast('Incorrect. The correct answer is Option (A). Review the solution!');
       }
 
