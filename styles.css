@@ -214,21 +214,43 @@ body {
   font-weight: 900;
   font-size: 1.45rem;
   letter-spacing: -0.03em;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #ffffff 0%, #fed7aa 40%, #fb923c 75%, #f97316 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.35));
 }
 
 .logo-badge {
   font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 8px;
+  font-weight: 800;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: var(--accent-primary);
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: #fb923c;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.15);
+}
+
+/* Global Unified Themed Icon System */
+.delcon-theme-icon {
+  display: inline-block;
+  vertical-align: -2px;
+  color: var(--accent-amber-light);
+  filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.45));
+  transition: all var(--trans-fast);
+  flex-shrink: 0;
+}
+
+.nav-link:hover .delcon-theme-icon,
+.nav-link.active .delcon-theme-icon,
+.stream-tab-btn:hover .delcon-theme-icon,
+.stream-tab-btn.active .delcon-theme-icon,
+.btn:hover .delcon-theme-icon {
+  color: #fed7aa;
+  filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.85));
+  transform: scale(1.12);
 }
 
 .nav-list {
