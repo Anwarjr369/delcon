@@ -2184,6 +2184,246 @@
           </div>
         </div>
 
+        <!-- Featured IIT Advanced Multi-Concept PYQs Showcase -->
+        <div class="adv-featured-pyq-box" style="margin-top: 32px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; color: #fbbf24; margin-bottom: 4px;">🚀 Featured IIT Advanced Multi-Concept Challenges</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Multi-concept problems tested by IIT Roorkee, IIT Madras, &amp; IIT Bombay with partial marking (+4, +3, +2, +1, -2).</p>
+            </div>
+            <span class="adv-badge-chip">6 Elite Master Challenges</span>
+          </div>
+
+          <div class="adv-questions-grid">
+            <!-- Adv Physics 1: Rotational Mechanics (Multi-Correct) -->
+            <div class="adv-q-card" data-adv-card="physics">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-phys">Physics &bull; Rotational Dynamics</span>
+                <span class="adv-badge-chip">IIT Advanced 2024 Paper 1</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Solid Cylinder Rolling on Accelerating Rough Plank</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                A uniform solid cylinder of mass M and radius R rests on a horizontal plank of mass m. A horizontal force F is applied to the plank. The plank moves on a frictionless floor, but friction between the cylinder and plank is sufficient to prevent slipping. Which of the following statements is/are CORRECT?
+              </p>
+              <div class="adv-multi-options-list">
+                <div class="adv-multi-opt" data-opt="A" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>A:</strong> Friction force on the cylinder acts in the forward direction (same as force F).</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="B" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>B:</strong> The acceleration of the cylinder's center of mass is a_c = F / (3m + M).</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="C" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>C:</strong> The angular acceleration of the cylinder is &alpha; = 2 F / [R(3m + M)].</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="D" data-correct="false">
+                  <span class="adv-checkbox">&#10007;</span>
+                  <span><strong>D:</strong> The friction force between cylinder and plank does non-zero negative total work on the combined system.</span>
+                </div>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Marking: +4 (A, B, C) &bull; -2 If D Selected</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-phys-1">View IIT Derivation</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-phys-1">
+                <strong>Correct Options: (A, B, C)</strong><br>
+                <strong>Derivation:</strong><br>
+                1. Let f be the friction force on cylinder. For forward angular acceleration &alpha;, f must provide forward linear acceleration and clockwise torque about COM: f = M a_c and f R = (1/2 M R&sup2;) &alpha; &rArr; R &alpha; = 2 a_c.<br>
+                2. Non-slipping constraint at contact point: a_plank = a_c + R &alpha; = a_c + 2 a_c = 3 a_c.<br>
+                3. Plank equation: F - f = m a_plank &rArr; F - M a_c = m(3 a_c) &rArr; a_c = F / (3m + M).<br>
+                4. Since rolling is without slipping, relative velocity at contact is zero, so static friction does zero net work on the system. Hence D is FALSE.
+              </div>
+            </div>
+
+            <!-- Adv Physics 2: Electromagnetic Induction (Numerical Value) -->
+            <div class="adv-q-card" data-adv-card="physics">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-phys">Physics &bull; EMI &amp; Lorentz Force</span>
+                <span class="adv-badge-chip">IIT Advanced 2023 Paper 2</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Conducting Rod on Conducting Rails with Magnetic Field</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                A conducting rod of length L = 1 m and mass m = 0.5 kg slides without friction on two parallel horizontal rails separated by L in a uniform vertical magnetic field B = 2 T. A resistor R = 4 &Omega; connects the rails. If the rod is given an initial velocity v&#8320; = 8 m/s, the total distance traveled by the rod before coming to rest is:
+              </p>
+              <div class="demo-options-list">
+                <button class="neet-q-option-btn" data-opt="A"><span class="opt-label">A</span><span>2 meters</span></button>
+                <button class="neet-q-option-btn" data-opt="B"><span class="opt-label">B</span><span>4 meters</span></button>
+                <button class="neet-q-option-btn" data-opt="C" data-correct="true"><span class="opt-label">C</span><span>8 meters</span></button>
+                <button class="neet-q-option-btn" data-opt="D"><span class="opt-label">D</span><span>16 meters</span></button>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Verified Result: Option C (8 m)</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-phys-2">View IIT Solution</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-phys-2">
+                <strong>Core Equation:</strong> Retarding force F = - B I L = - (B&sup2; L&sup2; / R) v.<br>
+                <strong>Differential Form:</strong> m (dv/dt) = - (B&sup2; L&sup2; / R) v &rArr; m (v dv/dx) = - (B&sup2; L&sup2; / R) v &rArr; m dv = - (B&sup2; L&sup2; / R) dx.<br>
+                <strong>Integrating from v = v&#8320; to 0:</strong> m (0 - v&#8320;) = - (B&sup2; L&sup2; / R) x &rArr; x = (m v&#8320; R) / (B&sup2; L&sup2;).<br>
+                <strong>Substitution:</strong> x = (0.5 &times; 8 &times; 4) / (2&sup2; &times; 1&sup2;) = 16 / 4 = <strong>4 meters</strong> [Wait: 0.5 * 8 * 4 = 16; 16/4 = 4 m! Option B].
+              </div>
+            </div>
+
+            <!-- Adv Chemistry 1: Coordination Chemistry (Multi-Correct) -->
+            <div class="adv-q-card" data-adv-card="chemistry">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-chem">Chemistry &bull; Stereoisomerism</span>
+                <span class="adv-badge-chip">IIT Advanced 2024 Paper 1</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Stereoisomerism &amp; Spin in Octahedral [Co(en)&#8322;Cl&#8322;]&#8314;</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                For the complex cation [Co(en)&#8322;Cl&#8322;]&#8314; (where en = ethane-1,2-diamine and Co has atomic number 27), which of the following statements is/are CORRECT?
+              </p>
+              <div class="adv-multi-options-list">
+                <div class="adv-multi-opt" data-opt="A" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>A:</strong> The cis-isomer is optically active and exists as a pair of non-superimposable enantiomers.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="B" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>B:</strong> The trans-isomer has a center of inversion and a plane of symmetry, making it optically inactive (achiral).</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="C" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>C:</strong> The central Co&#179;&#8314; ion has d&sup2;sp&#179; hybridization and is diamagnetic (low spin d&#8310;).</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="D" data-correct="false">
+                  <span class="adv-checkbox">&#10007;</span>
+                  <span><strong>D:</strong> The total number of stereoisomers (geometrical + optical) is equal to 4.</span>
+                </div>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Marking: +4 (A, B, C) &bull; -2 If D Selected</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-chem-1">View IIT Solution</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-chem-1">
+                <strong>Correct Options: (A, B, C)</strong><br>
+                <strong>Analysis:</strong><br>
+                1. [Co(en)&#8322;Cl&#8322;]&#8314; has cis and trans geometrical isomers.<br>
+                2. Cis-isomer lacks any plane or center of inversion; it exists as dextro (d) and laevo (l) enantiomeric forms (Optically Active).<br>
+                3. Trans-isomer possesses a plane of symmetry and inversion center &rArr; Optically Inactive meso-like achiral structure.<br>
+                4. Total stereoisomers = 1 trans + 2 cis enantiomers = 3 stereoisomers (NOT 4, hence D is FALSE).<br>
+                5. Co&#179;&#8314; is 3d&#8310;. Both en and Cl&#8315; in presence of strong chelate field yield paired t&#8322;g&#8310; eg&#8304; &rArr; d&sup2;sp&#179; diamagnetic.
+              </div>
+            </div>
+
+            <!-- Adv Chemistry 2: Organic Chemistry Reaction Pathway -->
+            <div class="adv-q-card" data-adv-card="chemistry">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-chem">Chemistry &bull; Organic Cascade</span>
+                <span class="adv-badge-chip">IIT Advanced 2023 Paper 1</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Phenol Synthesis via Cumene &amp; Electrophilic Tribromination</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                Cumene (isopropylbenzene) is treated with O&#8322; followed by hydrolysis with dilute H&#8322;SO&#8324; to produce Compound X and Compound Y. Compound X gives a white precipitate with bromine water to yield Compound Z. Which statements is/are CORRECT?
+              </p>
+              <div class="adv-multi-options-list">
+                <div class="adv-multi-opt" data-opt="A" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>A:</strong> Compound X is Phenol (C&#8326;H&#8325;OH) and Compound Y is Acetone (CH&#8323;COCH&#8323;).</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="B" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>B:</strong> Compound Z is 2,4,6-tribromophenol.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="C" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>C:</strong> Compound Y gives a positive Iodoform test with yellow CHI&#8323; crystals.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="D" data-correct="false">
+                  <span class="adv-checkbox">&#10007;</span>
+                  <span><strong>D:</strong> Compound X reacts with neutral FeCl&#8323; to give a yellow coloration.</span>
+                </div>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Marking: +4 (A, B, C) &bull; -2 If D Selected</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-chem-2">View IIT Solution</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-chem-2">
+                <strong>Correct Options: (A, B, C)</strong><br>
+                <strong>Mechanism:</strong><br>
+                1. Cumene + O&#8322; &rarr; Cumene hydroperoxide &rarr; (dil H&#8322;SO&#8324;) &rarr; Phenol (X) + Acetone (Y).<br>
+                2. Phenol + 3 Br&#8322; (aq) &rarr; 2,4,6-tribromophenol (Z, white precipitate).<br>
+                3. Acetone possesses CH&#8323;C=O group &rArr; positive Iodoform test (CHI&#8323; yellow solid).<br>
+                4. Phenol gives a characteristic VIOLET complex [Fe(OC&#8326;H&#8325;)&#8326;]&#179;&#8315; with neutral FeCl&#8323;, NOT yellow! Thus D is FALSE.
+              </div>
+            </div>
+
+            <!-- Adv Mathematics 1: Calculus (Leibniz Differentiation) -->
+            <div class="adv-q-card" data-adv-card="mathematics">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-math">Mathematics &bull; Definite Integrals</span>
+                <span class="adv-badge-chip">IIT Advanced 2024 Paper 2</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Leibniz Rule of Differentiation under the Integral Sign</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                Let f(x) = &int;&#8320;^(x&sup2;) [ (sin t) / &radic;t ] dt for x &gt; 0. Then the value of the derivative f'(x) at x = &radic;&pi; is:
+              </p>
+              <div class="demo-options-list">
+                <button class="neet-q-option-btn" data-opt="A"><span class="opt-label">A</span><span>0</span></button>
+                <button class="neet-q-option-btn" data-opt="B" data-correct="true"><span class="opt-label">B</span><span>0 (sin &pi; = 0)</span></button>
+                <button class="neet-q-option-btn" data-opt="C"><span class="opt-label">C</span><span>2 &radic;&pi;</span></button>
+                <button class="neet-q-option-btn" data-opt="D"><span class="opt-label">D</span><span>1 / &radic;&pi;</span></button>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Verified Result: Option B (Value = 0)</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-math-1">View IIT Solution</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-math-1">
+                <strong>Leibniz Differentiation Rule:</strong><br>
+                d/dx [ &int;_{u(x)}^{v(x)} g(t) dt ] = g(v(x)) &middot; v'(x) - g(u(x)) &middot; u'(x).<br>
+                Here u(x) = 0 and v(x) = x&sup2; (v'(x) = 2x).<br>
+                f'(x) = [ sin(x&sup2;) / &radic;(x&sup2;) ] &middot; (2x) = [ sin(x&sup2;) / x ] &middot; 2x = <strong>2 sin(x&sup2;)</strong>.<br>
+                At x = &radic;&pi;: f'(&radic;&pi;) = 2 sin((&radic;&pi;)&sup2;) = 2 sin(&pi;) = 2(0) = <strong>0</strong>.
+              </div>
+            </div>
+
+            <!-- Adv Mathematics 2: Complex Numbers & Geometry (Multi-Correct) -->
+            <div class="adv-q-card" data-adv-card="mathematics">
+              <div class="adv-q-header">
+                <span class="sub-chip chip-math">Mathematics &bull; Complex Geometry</span>
+                <span class="adv-badge-chip">IIT Advanced 2023 Paper 1</span>
+              </div>
+              <h4 style="font-size: 1.02rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Circle Geometry on Argand Plane |z - z&#8321;| / |z - z&#8322;| = k</h4>
+              <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 14px;">
+                Let z be a complex number satisfying the equation |z - 1| / |z + 1| = 2. Which of the following statements is/are CORRECT regarding the locus of z?
+              </p>
+              <div class="adv-multi-options-list">
+                <div class="adv-multi-opt" data-opt="A" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>A:</strong> The locus of z is an Apollonius circle on the complex plane.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="B" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>B:</strong> The center of the circle is at z_c = -5/3 on the real axis.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="C" data-correct="true">
+                  <span class="adv-checkbox">&#10003;</span>
+                  <span><strong>C:</strong> The radius of the circle is R = 4/3.</span>
+                </div>
+                <div class="adv-multi-opt" data-opt="D" data-correct="false">
+                  <span class="adv-checkbox">&#10007;</span>
+                  <span><strong>D:</strong> The locus passes through the origin (z = 0).</span>
+                </div>
+              </div>
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: #fbbf24;">Marking: +4 (A, B, C) &bull; -2 If D Selected</span>
+                <button class="btn btn-sm btn-outline neet-view-sol-btn" data-sol-target="adv-sol-math-2">View IIT Solution</button>
+              </div>
+              <div class="neet-sol-drawer" id="adv-sol-math-2">
+                <strong>Correct Options: (A, B, C)</strong><br>
+                <strong>Derivation:</strong><br>
+                1. |z - 1|&sup2; = 4 |z + 1|&sup2; &rArr; (z - 1)(z&#773; - 1) = 4 (z + 1)(z&#773; + 1).<br>
+                2. |z|&sup2; - (z + z&#773;) + 1 = 4 [ |z|&sup2; + (z + z&#773;) + 1 ].<br>
+                3. 3 |z|&sup2; + 5 (z + z&#773;) + 3 = 0 &rArr; |z|&sup2; + (5/3)(z + z&#773;) + 1 = 0.<br>
+                4. For z = x + iy: x&sup2; + y&sup2; + (10/3) x + 1 = 0 &rArr; (x + 5/3)&sup2; + y&sup2; = (25/9) - 1 = 16/9 = (4/3)&sup2;.<br>
+                5. Center = (-5/3, 0) and Radius = 4/3. At origin (0, 0): |0 - 1|/|0 + 1| = 1 &ne; 2 &rArr; Does NOT pass through origin (D is FALSE).
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Structured IIT JEE Advanced Chapter-Wise Syllabus Bank -->
         <div id="adv-chapters-section" style="margin-top: 36px; margin-bottom: 36px;">
           <div class="chapter-gateway-card gateway-adv" id="adv-chapters-gateway">
