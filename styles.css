@@ -32,6 +32,15 @@
   --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #fb7185 100%);
   --accent-gradient-glow: rgba(99, 102, 241, 0.3);
 
+  /* Amber & Solar Tech Tokens (Pinterest Gcore Design System) */
+  --accent-amber: #f97316;
+  --accent-amber-light: #fb923c;
+  --accent-amber-dark: #ea580c;
+  --accent-amber-glow: rgba(249, 115, 22, 0.45);
+  --accent-amber-subtle: rgba(249, 115, 22, 0.12);
+  --accent-amber-border: rgba(249, 115, 22, 0.35);
+  --accent-amber-gradient: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+
   /* Typography */
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
