@@ -3248,14 +3248,14 @@ body {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #06b6d4;
-  box-shadow: 0 0 10px #06b6d4;
+  background: var(--accent-amber);
+  box-shadow: 0 0 12px var(--accent-amber);
   animation: streamPulseAnim 2s infinite ease-in-out;
 }
 
 @keyframes streamPulseAnim {
   0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.3); opacity: 0.4; }
+  50% { transform: scale(1.35); opacity: 0.45; }
 }
 
 .stream-bar-title {
@@ -3291,34 +3291,38 @@ body {
 }
 
 .stream-tab-btn:hover {
-  border-color: var(--border-strong);
+  border-color: rgba(249, 115, 22, 0.45);
   color: var(--text-primary);
   transform: translateY(-1px);
+  box-shadow: 0 2px 12px rgba(249, 115, 22, 0.15);
 }
 
 .stream-tab-btn.active {
-  background: rgba(6, 182, 212, 0.12);
-  border-color: #06b6d4;
-  color: #06b6d4;
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.25);
+  background: rgba(249, 115, 22, 0.14) !important;
+  border-color: var(--accent-amber) !important;
+  color: #fdba74 !important;
+  box-shadow: 0 0 18px var(--accent-amber-glow) !important;
 }
 
 .stream-tab-btn[data-stream="jee-advanced"].active {
-  background: rgba(245, 158, 11, 0.14);
-  border-color: #f59e0b;
-  color: #f59e0b;
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+  background: rgba(251, 146, 60, 0.16) !important;
+  border-color: #fb923c !important;
+  color: #fed7aa !important;
+  box-shadow: 0 0 18px rgba(251, 146, 60, 0.35) !important;
 }
 
 .stream-tab-btn[data-stream="neet-ug"].active {
-  background: rgba(16, 185, 129, 0.14);
-  border-color: #10b981;
-  color: #10b981;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+  background: rgba(234, 88, 12, 0.16) !important;
+  border-color: #ea580c !important;
+  color: #fed7aa !important;
+  box-shadow: 0 0 18px rgba(234, 88, 12, 0.35) !important;
 }
 
 .stream-tab-icon {
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stream-tab-info {
@@ -3342,21 +3346,24 @@ body {
 .stream-tab-badge {
   font-size: 0.62rem;
   font-weight: 800;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
-  background: rgba(6, 182, 212, 0.15);
-  color: #06b6d4;
-  letter-spacing: 0.02em;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: #fb923c;
+  letter-spacing: 0.03em;
 }
 
 .stream-tab-badge.adv-badge {
-  background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  background: rgba(251, 146, 60, 0.18);
+  border-color: rgba(251, 146, 60, 0.4);
+  color: #fed7aa;
 }
 
 .stream-tab-badge.neet-badge {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+  background: rgba(234, 88, 12, 0.18);
+  border-color: rgba(234, 88, 12, 0.4);
+  color: #fdba74;
 }
 
 .stream-key-quick-link {
@@ -3365,29 +3372,33 @@ body {
   gap: 6px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #06b6d4;
+  color: #fb923c;
   text-decoration: none;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.25);
-  transition: all var(--transition-fast);
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.15);
+  transition: all var(--trans-fast);
 }
 
 .stream-key-quick-link:hover {
-  background: rgba(6, 182, 212, 0.2);
-  border-color: #06b6d4;
+  background: rgba(249, 115, 22, 0.22);
+  border-color: var(--accent-amber);
+  color: #ffffff;
+  box-shadow: 0 0 18px var(--accent-amber-glow);
+  transform: translateY(-1px);
 }
 
-/* Nav Link Accents */
+/* Nav Link Accents - Harmonized Warm Solar Palette */
 .nav-adv-tab {
-  color: #f59e0b !important;
+  color: var(--text-secondary);
 }
 .nav-neet-tab {
-  color: #10b981 !important;
+  color: var(--text-secondary);
 }
 .nav-key-tab {
-  color: #a855f7 !important;
+  color: var(--text-secondary);
 }
 
 /* ==========================================================================
