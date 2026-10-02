@@ -1803,6 +1803,41 @@ document.addEventListener('DOMContentLoaded', () => {
         trapAlert: `Never confuse amplitude (linear dimension) with intensity/energy density (quadratic in amplitude)!`,
         finalAnswer: `Correct Choice: Option (A)`
       };
+      q4 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Analytical Principles" : "JEE Main Shift &bull; Statement-I & II",
+        question: `Given below are two statements regarding ${title}:<br><br>` +
+          `<strong>Statement I:</strong> When a conservative force field performs positive work on a particle, the potential energy of the system decreases.<br>` +
+          `<strong>Statement II:</strong> The electrostatic and gravitational forces are both central, conservative forces that obey inverse square laws.<br><br>` +
+          `In light of the above statements, choose the most appropriate answer:`,
+        options: [
+          `Both Statement I and Statement II are correct.`,
+          `Both Statement I and Statement II are incorrect.`,
+          `Statement I is correct but Statement II is incorrect.`,
+          `Statement I is incorrect but Statement II is correct.`
+        ],
+        correctOption: "A",
+        formulaUsed: "Potential Energy: &Delta;U = -W_conservative = - &int; F &middot; dr",
+        step1: `By definition &Delta;U = -W_c. When W_c &gt; 0, &Delta;U &lt; 0 (potential energy decreases). Statement I is true.`,
+        step2: `Both gravitational and electrostatic interactions are central spherically symmetric forces with zero curl, confirming Statement II is true.`,
+        trapAlert: `Work done by the conservative force itself decreases potential energy, while external work increases it!`,
+        finalAnswer: `Correct Choice: Option (A)`
+      };
+      q5 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Numerical Dynamics" : "JEE Main Shift &bull; Calculation Challenge",
+        question: `In ${title}, a physical parameter follows a power relation $Y = k \\frac{A^2 \\sqrt{B}}{C^3}$. If the percentage errors in measuring $A$, $B$, and $C$ are 1%, 4%, and 2% respectively, the maximum percentage error in $Y$ is:`,
+        options: [
+          `10%`,
+          `8%`,
+          `4%`,
+          `12%`
+        ],
+        correctOption: "A",
+        formulaUsed: "% Error: &Delta;Y/Y = 2(&Delta;A/A) + 0.5(&Delta;B/B) + 3(&Delta;C/C)",
+        step1: `Differentiating the logarithmic expression: &Delta;Y/Y = 2(&Delta;A/A) + 0.5(&Delta;B/B) + 3(&Delta;C/C).`,
+        step2: `Substitute given values: % Error = 2(1%) + 0.5(4%) + 3(2%) = 2% + 2% + 6% = 10%. Option (A) is correct.`,
+        trapAlert: `Errors in measurement always sum up in the worst-case scenario. Never subtract the denominator's error!`,
+        finalAnswer: `Maximum percentage error = 10% (Option A)`
+      };
     } else {
       q1 = {
         examMeta: isAdv ? "IIT Advanced &bull; Analysis" : "JEE Main Shift PYQ",
@@ -1852,6 +1887,41 @@ document.addEventListener('DOMContentLoaded', () => {
         trapAlert: `The scalar dot product term 2(u &middot; v) vanishes ONLY for orthogonal vectors (&theta; = 90&deg;).`,
         finalAnswer: `Correct Choice: Option (A)`
       };
+      q4 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Analysis / Calculus" : "JEE Main Shift &bull; Statement-I & II",
+        question: `Given below are two statements regarding ${title}:<br><br>` +
+          `<strong>Statement I:</strong> If $f(x)$ is continuous on $[a, b]$ and differentiable on $(a, b)$ with $f(a) = f(b)$, then there exists at least one $c \\in (a, b)$ such that $f'(c) = 0$ (Rolle's Theorem).<br>` +
+          `<strong>Statement II:</strong> If $f'(x) &gt; 0$ for all $x \\in (a, b)$, then $f(x)$ is strictly increasing on $[a, b]$ and is strictly one-to-one (injective).<br><br>` +
+          `In light of the above statements, choose the most appropriate answer:`,
+        options: [
+          `Both Statement I and Statement II are correct.`,
+          `Both Statement I and Statement II are incorrect.`,
+          `Statement I is correct but Statement II is incorrect.`,
+          `Statement I is incorrect but Statement II is correct.`
+        ],
+        correctOption: "A",
+        formulaUsed: "Rolle's &amp; Lagrange's Mean Value Theorem: f'(c) = [f(b) - f(a)] / (b - a)",
+        step1: `Evaluate Statement I: This is the verbatim statement of Rolle's Theorem, requiring continuity on [a, b], differentiability on (a, b), and equal boundary values. True.`,
+        step2: `Evaluate Statement II: A strictly positive derivative ensures that for any x1 &lt; x2, f(x1) &lt; f(x2) (monotonicity), which guarantees injectivity. True.`,
+        trapAlert: `Check that open vs closed intervals are specified correctly: continuity requires the closed interval [a, b], while differentiability is only required on the open interval (a, b)!`,
+        finalAnswer: `Correct Choice: Option (A)`
+      };
+      q5 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Limit / Integral Evaluation" : "JEE Main Shift &bull; High-Yield Analytical",
+        question: `In ${title}, the value of the limit $\\lim_{x \\to 0} \\frac{\\sin(3x) - 3x + \\frac{9}{2}x^3}{x^5}$ is equal to:`,
+        options: [
+          `81 / 40`,
+          `27 / 20`,
+          `9 / 10`,
+          `243 / 120`
+        ],
+        correctOption: "A",
+        formulaUsed: "Maclaurin Series Expansion: sin(u) = u - u^3/3! + u^5/5! - ...",
+        step1: `Expand $\\sin(3x)$ up to degree 5: $\\sin(3x) = 3x - \\frac{(3x)^3}{6} + \\frac{(3x)^5}{120} + O(x^7) = 3x - \\frac{27}{6}x^3 + \\frac{243}{120}x^5 = 3x - \\frac{9}{2}x^3 + \\frac{81}{40}x^5$.`,
+        step2: `Substitute into numerator: $\\sin(3x) - 3x + \\frac{9}{2}x^3 = \\frac{81}{40}x^5 + O(x^7)$. Dividing by $x^5$ and taking $x \\to 0$ gives $81 / 40$ (Option A).`,
+        trapAlert: `Using L'Hôpital's rule 5 times is highly error-prone under time pressure! Standard Taylor series expansions resolve degree-5 limits in 2 lines.`,
+        finalAnswer: `Limit = 81 / 40 (Option A)`
+      };
     }
 
     return {
@@ -1871,7 +1941,7 @@ document.addEventListener('DOMContentLoaded', () => {
         q1.formulaUsed,
         `Standard dimensional and boundary checks for ${title}`
       ],
-      questions: [q1, q2, q3],
+      questions: [q1, q2, q3, q4, q5],
       featuredPyq: q1
     };
   }
