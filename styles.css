@@ -470,20 +470,13 @@ body {
   letter-spacing: 0.04em;
 }
 
-.chip-phys {
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: var(--color-phys);
-}
-.chip-chem {
-  background: rgba(52, 211, 153, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.3);
-  color: var(--color-chem);
-}
-.chip-math {
-  background: rgba(251, 113, 133, 0.12);
-  border: 1px solid rgba(251, 113, 133, 0.3);
-  color: var(--color-math);
+.chip-phys,
+.chip-chem,
+.chip-math,
+.sub-chip {
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: var(--accent-amber-light);
 }
 
 .weightage-badge {
