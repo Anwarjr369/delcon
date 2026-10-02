@@ -1584,7 +1584,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const classLevel = isNeet ? 'NCERT Class 11 & 12' : (isAdv ? 'IIT Advanced (Class 11 & 12)' : 'NTA Class 11 & 12');
     const chipClass = subjectRaw === 'chemistry' ? 'chip-chem' : (subjectRaw === 'mathematics' || subjectRaw === 'maths' ? 'chip-math' : 'chip-phys');
 
-    let q1, q2, q3;
+    let q1, q2, q3, q4, q5;
 
     if (subject === 'Biology') {
       q1 = {
@@ -1635,6 +1635,41 @@ document.addEventListener('DOMContentLoaded', () => {
         trapAlert: `Remember that chromosome segregation is symmetric unless non-disjunction is explicitly mentioned in the question.`,
         finalAnswer: `Correct Choice: Option (A)`
       };
+      q4 = {
+        examMeta: "NEET UG &bull; Statement-I & Statement-II NCERT",
+        question: `Given below are two statements regarding ${title}:<br><br>` +
+          `<strong>Statement I:</strong> Cellular compartmentalization isolates mutually incompatible biochemical pathways so they proceed concurrently without destructive interference.<br>` +
+          `<strong>Statement II:</strong> All catalytic enzymes are globular proteins that irreversibly denature when ambient temperature exceeds 40&deg;C.<br><br>` +
+          `Choose the most appropriate answer:`,
+        options: [
+          `Statement I is correct but Statement II is incorrect.`,
+          `Both Statement I and Statement II are correct.`,
+          `Both Statement I and Statement II are incorrect.`,
+          `Statement I is incorrect but Statement II is correct.`
+        ],
+        correctOption: "A",
+        formulaUsed: "Enzymology & Thermophiles: Taq Polymerase retains activity at 95&deg;C",
+        step1: `Statement I is factually true: membrane-bound organelles ensure spatial isolation of anabolic and catabolic processes.`,
+        step2: `Statement II is false: thermophilic bacteria enzymes (e.g. Taq polymerase) are heat-stable and functional well above 40&deg;C. Option (A) is correct.`,
+        trapAlert: `Words like 'all', 'never', and 'always' in NEET Biology questions are frequently traps hiding verified biological exceptions.`,
+        finalAnswer: `Correct Choice: Option (A)`
+      };
+      q5 = {
+        examMeta: "NEET UG &bull; Integrated Genetics Dihybrid Test",
+        question: `In a dihybrid test cross involving traits in ${title} (AaBb &times; aabb with genes assorting independently), what is the phenotypic ratio obtained in the F1 progeny?`,
+        options: [
+          `1 : 1 : 1 : 1`,
+          `9 : 3 : 3 : 1`,
+          `3 : 1`,
+          `15 : 1`
+        ],
+        correctOption: "A",
+        formulaUsed: "Mendelian Test Cross: Dihybrid Ratio = (1:1) &times; (1:1) = 1:1:1:1",
+        step1: `The heterozygous parent AaBb produces 4 gamete types in equal frequency (AB, Ab, aB, ab).`,
+        step2: `The homozygous recessive parent aabb produces only ab gametes. Hence all 4 resulting genotypes/phenotypes occur in a 1:1:1:1 ratio.`,
+        trapAlert: `9:3:3:1 is the selfing ratio of AaBb &times; AaBb, whereas test cross always yields 1:1:1:1 for two unlinked genes!`,
+        finalAnswer: `Correct Choice: Option (A)`
+      };
     } else if (subject === 'Chemistry') {
       q1 = {
         examMeta: isAdv ? "IIT Advanced &bull; Multi-Concept" : "JEE Main Shift PYQ",
@@ -1683,6 +1718,41 @@ document.addEventListener('DOMContentLoaded', () => {
         step2: `Molecules adopt geometries that place lone pairs in positions maximizing bond angles (e.g. equatorial in TBP, trans in octahedral), strictly minimizing 90&deg; LP repulsions (Option A).`,
         trapAlert: `Never place bulky ligands or lone pairs at axial positions in trigonal bipyramidal systems where three 90&deg; repulsions occur!`,
         finalAnswer: `Correct Choice: Option (A)`
+      };
+      q4 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Ionic & Electrochemistry" : "JEE Main Shift &bull; Statement-I & II",
+        question: `Given below are two statements regarding ${title}:<br><br>` +
+          `<strong>Statement I:</strong> Molar conductivity &Lambda;_m of both strong and weak electrolytes increases upon dilution.<br>` +
+          `<strong>Statement II:</strong> For weak electrolytes, the steep increase in &Lambda;_m near infinite dilution is governed by Ostwald's dilution law where degree of dissociation &alpha; &rarr; 1.<br><br>` +
+          `Choose the most appropriate answer:`,
+        options: [
+          `Both Statement I and Statement II are correct.`,
+          `Both Statement I and Statement II are incorrect.`,
+          `Statement I is correct but Statement II is incorrect.`,
+          `Statement I is incorrect but Statement II is correct.`
+        ],
+        correctOption: "A",
+        formulaUsed: "Kohlrausch's Law: &Lambda;_m = &Lambda;&deg;_m - A &radic;C | &alpha; = &Lambda;_m / &Lambda;&deg;_m",
+        step1: `Statement I is correct: Dilution decreases interionic attraction in strong electrolytes and promotes ionization in weak electrolytes.`,
+        step2: `Statement II is correct: As C &rarr; 0, Ostwald's law yields &alpha; &rarr; 1, producing a rapid exponential ascent in molar conductance. Option (A) is correct.`,
+        trapAlert: `Remember that specific conductivity &kappa; DECREASES upon dilution while molar conductivity &Lambda;_m INCREASES!`,
+        finalAnswer: `Correct Choice: Option (A)`
+      };
+      q5 = {
+        examMeta: isAdv ? "IIT Advanced &bull; Quantitative Equilibrium" : "JEE Main Shift &bull; Integer Numerical",
+        question: `In ${title}, a 0.1 M monobasic acid solution is measured to have a pH of 3.00 at 298 K. The dissociation constant Ka of the acid is $10^{-n}$. What is the integer value of $n$?`,
+        options: [
+          `5`,
+          `4`,
+          `3`,
+          `6`
+        ],
+        correctOption: "A",
+        formulaUsed: "Ka = [H+]&sup2; / C (valid since &alpha; = 10^-3 / 0.1 = 1% &lt; 5%)",
+        step1: `From pH = 3.00 &rArr; [H+] = 10^-3 M. Concentration C = 0.1 M = 10^-1 M.`,
+        step2: `Ka = (10^-3)&sup2; / 10^-1 = 10^-6 / 10^-1 = 10^-5. Comparing with $10^{-n}$ gives $n = 5$.`,
+        trapAlert: `Always verify that &alpha; &lt; 5% before ignoring [H+] in the denominator (C - [H+] &asymp; C). Here &alpha; = 1%, confirming accuracy.`,
+        finalAnswer: `Integer value n = 5 (Option A)`
       };
     } else if (subject === 'Physics') {
       q1 = {
