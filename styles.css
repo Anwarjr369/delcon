@@ -2696,8 +2696,8 @@ body {
 }
 
 .exam-opt-row.selected {
-  border-color: var(--accent-primary);
-  background: rgba(99, 102, 241, 0.12);
+  border-color: var(--accent-amber);
+  background: rgba(249, 115, 22, 0.12);
 }
 
 .exam-modal-footer {
