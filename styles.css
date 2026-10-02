@@ -4003,8 +4003,8 @@ body {
   font-size: 0.84rem;
   font-weight: 600;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  background: rgba(249, 115, 22, 0.08);
   color: var(--accent-primary);
   cursor: pointer;
   transition: all var(--trans-fast);
@@ -4015,18 +4015,18 @@ body {
   background: var(--accent-primary);
   color: #ffffff;
   border-color: var(--accent-primary);
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
   transform: translateY(-1px);
 }
 
 [data-theme="light"] .nav-sign-in-btn {
-  background: #f5f3ff;
-  border-color: #818cf8;
-  color: #4f46e5;
+  background: #fff7ed;
+  border-color: #fdba74;
+  color: #ea580c;
 }
 
 [data-theme="light"] .nav-sign-in-btn:hover {
-  background: #4f46e5;
+  background: #ea580c;
   color: #ffffff;
 }
 
@@ -4063,14 +4063,14 @@ body {
 .user-profile-btn:hover,
 .user-profile-btn[aria-expanded="true"] {
   border-color: var(--accent-primary);
-  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 2px 10px rgba(249, 115, 22, 0.25);
 }
 
 .user-avatar-badge {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  background: var(--accent-gradient);
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: 800;
@@ -4079,7 +4079,7 @@ body {
   justify-content: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 6px rgba(249, 115, 22, 0.35);
 }
 
 .user-name-label {
@@ -4140,8 +4140,8 @@ body {
   font-size: 0.72rem;
   font-weight: 700;
   border-radius: var(--radius-full);
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
   color: var(--accent-primary);
 }
 
