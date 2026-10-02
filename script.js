@@ -4133,4 +4133,40 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.classList.remove('show');
     }, 3800);
   }
+
+  // Sandhill Studio Louvre Side Rail Scroll Spy
+  const railDots = document.querySelectorAll('.sandhill-side-rail .side-rail-dot');
+  if (railDots.length > 0) {
+    const railTargets = [
+      { id: 'hero', dot: railDots[0] },
+      { id: 'chapters', dot: railDots[1] },
+      { id: 'study-desk', dot: railDots[2] },
+      { id: 'practice-modes', dot: railDots[3] },
+      { id: 'answer-key-portal', dot: railDots[4] }
+    ];
+
+    function updateSideRail() {
+      const scrollPos = window.scrollY + 220;
+      let activeTarget = railTargets[0];
+      for (const target of railTargets) {
+        const el = document.getElementById(target.id);
+        if (el && el.offsetTop <= scrollPos) {
+          activeTarget = target;
+        }
+      }
+      railTargets.forEach(t => {
+        if (t === activeTarget) {
+          t.dot.classList.add('active');
+          t.dot.innerHTML = '<span class="rail-indicator-bar"></span>';
+        } else {
+          t.dot.classList.remove('active');
+          t.dot.innerHTML = '<span class="rail-dot"></span>';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateSideRail, { passive: true });
+    updateSideRail();
+  }
 });
+
