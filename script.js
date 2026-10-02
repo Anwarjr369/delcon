@@ -1787,6 +1787,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (isCorrect) {
             optBtn.style.borderColor = '#10b981';
             optBtn.style.background = 'rgba(16, 185, 129, 0.2)';
+            SoundFX.playCorrect();
+            StudyDesk.recordAttempt(true);
             if (feedback) {
               feedback.style.display = 'block';
               feedback.style.background = 'rgba(16, 185, 129, 0.15)';
@@ -1798,6 +1800,8 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             optBtn.style.borderColor = '#ef4444';
             optBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+            SoundFX.playIncorrect();
+            StudyDesk.recordAttempt(false);
             const corr = qItem.querySelector('.modal-interactive-opt[data-is-correct="true"]');
             if (corr) {
               corr.style.borderColor = '#10b981';
@@ -1824,6 +1828,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isHidden = solBox.style.display === 'none' || !solBox.style.display;
             solBox.style.display = isHidden ? 'block' : 'none';
             tBtn.textContent = isHidden ? 'Hide Solution ▲' : 'View 3-Tier Solution ▼';
+            SoundFX.playClick();
           }
         });
       });
@@ -1853,10 +1858,12 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const activePanel = solBox.querySelector(`.tier-panel-${targetTier}`);
           if (activePanel) activePanel.style.display = 'block';
+          SoundFX.playClick();
         });
       });
 
       chapterModal?.showModal();
+      renderAllMath(modalContent);
     });
   });
 
