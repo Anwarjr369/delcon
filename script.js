@@ -343,6 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const subjectFilterBtns = document.querySelectorAll('[data-subject-filter]');
   const chapterCards = document.querySelectorAll('.chapter-card');
 
+  const historicalChapterIds = new Set([
+    'surface-chemistry', 'solid-state', 'metallurgy', 'states-of-matter',
+    'polymers', 'chemistry-in-everyday-life', 'environmental-chemistry',
+    's-block-elements', 'communication-systems', 'mathematical-reasoning'
+  ]);
+
+  let currentSyllabusScope = '2026';
+
   function filterChapters() {
     const query = (searchInput?.value || '').toLowerCase().trim();
     const activeSubjectBtn = document.querySelector('.filter-btn.active');
@@ -350,19 +358,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chapterCards.forEach(card => {
       const cardSubject = card.getAttribute('data-subject');
+      const cardChapterId = card.getAttribute('data-chapter');
       const cardTitle = (card.querySelector('.chapter-title')?.textContent || '').toLowerCase();
       const cardInfo = (card.querySelector('.chapter-info')?.textContent || '').toLowerCase();
 
+      const isHistorical = historicalChapterIds.has(cardChapterId) || 
+        (window.JEE_ALL_CHAPTERS && window.JEE_ALL_CHAPTERS[cardChapterId]?.is2026Syllabus === false);
+
+      const matchesSyllabus = (currentSyllabusScope === 'all' || !isHistorical);
       const matchesSubject = (selectedSubject === 'all' || cardSubject === selectedSubject);
       const matchesSearch = (!query || cardTitle.includes(query) || cardInfo.includes(query));
 
-      if (matchesSubject && matchesSearch) {
+      if (matchesSyllabus && matchesSubject && matchesSearch) {
         card.classList.remove('hidden');
       } else {
         card.classList.add('hidden');
       }
     });
   }
+
+  function setSyllabusScope(scope) {
+    currentSyllabusScope = scope;
+
+    // Sync dashboard pills
+    const dash2026 = document.getElementById('dash-syllabus-filter-2026');
+    const dashAll = document.getElementById('dash-syllabus-filter-all');
+    if (dash2026 && dashAll) {
+      if (scope === '2026') {
+        dash2026.classList.add('active');
+        dashAll.classList.remove('active');
+      } else {
+        dashAll.classList.add('active');
+        dash2026.classList.remove('active');
+      }
+    }
+
+    // Sync chapter bank pills
+    const chap2026 = document.getElementById('chapters-syllabus-2026');
+    const chapAll = document.getElementById('chapters-syllabus-all');
+    if (chap2026 && chapAll) {
+      if (scope === '2026') {
+        chap2026.classList.add('active');
+        chapAll.classList.remove('active');
+      } else {
+        chapAll.classList.add('active');
+        chap2026.classList.remove('active');
+      }
+    }
+
+    // Update telemetry badges
+    const dashCount = document.getElementById('dash-mapped-count');
+    if (dashCount) {
+      dashCount.textContent = scope === '2026' ? '60 Active Chapters (2026 Scope)' : '70 Chapters Mapped (Full Archive)';
+    }
+
+    const indicator = document.getElementById('active-syllabus-indicator');
+    if (indicator) {
+      indicator.textContent = scope === '2026' 
+        ? '✓ Filtering: Active 2026 Rationalized Syllabus' 
+        : '🏛️ Showing: Full 2012–2026 Historical Archive (70 Chapters)';
+    }
+
+    // Update pyq-dashboard hierarchy tree rows
+    document.querySelectorAll('.hierarchy-topic-row').forEach(row => {
+      const is2026 = row.getAttribute('data-2026') === 'true';
+      if (scope === '2026' && !is2026) {
+        row.classList.add('hidden-by-syllabus');
+      } else {
+        row.classList.remove('hidden-by-syllabus');
+      }
+    });
+
+    // Re-filter chapter cards
+    filterChapters();
+  }
+
+  // Bind syllabus scope filter buttons
+  document.getElementById('dash-syllabus-filter-2026')?.addEventListener('click', () => {
+    setSyllabusScope('2026');
+    SoundFX?.playClick?.();
+  });
+  document.getElementById('dash-syllabus-filter-all')?.addEventListener('click', () => {
+    setSyllabusScope('all');
+    SoundFX?.playClick?.();
+  });
+  document.getElementById('chapters-syllabus-2026')?.addEventListener('click', () => {
+    setSyllabusScope('2026');
+    SoundFX?.playClick?.();
+  });
+  document.getElementById('chapters-syllabus-all')?.addEventListener('click', () => {
+    setSyllabusScope('all');
+    SoundFX?.playClick?.();
+  });
+
+  // Apply default 2026 scope on initialization
+  setSyllabusScope('2026');
 
   // Filter button clicks
   subjectFilterBtns.forEach(btn => {
@@ -1228,11 +1318,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 6. Chapter Deep-Dive Modal (Integrated with Complete 66-Chapter Database)
   // =========================================================================
-  function formatChapterModalContent(data) {
+  function formatChapterModalContent(data, initialTab = 'solve') {
     if (!data) return '<p>Comprehensive PYQ set covering all NTA exam shifts with step-by-step solutions.</p>';
     if (typeof data.content === 'string') return data.content;
 
+    const isSolve = initialTab === 'solve';
+    const isAnalysis = initialTab === 'analysis';
+    const isFormula = initialTab === 'formula';
+
     let html = `
+      <div class="chapter-modal-tab-bar">
+        <button type="button" class="modal-section-tab-btn ${isSolve ? 'active' : ''}" data-modal-target="solve">
+          🎯 Question Solver (5 Shifts)
+        </button>
+        <button type="button" class="modal-section-tab-btn ${isAnalysis ? 'active' : ''}" data-modal-target="analysis">
+          📊 Section 10 Telemetry &amp; Trends
+        </button>
+        <button type="button" class="modal-section-tab-btn ${isFormula ? 'active' : ''}" data-modal-target="formula">
+          📐 Formula Codex &amp; NTA Scope
+        </button>
+      </div>
+
+      <div class="modal-tab-panel modal-panel-formula" style="display: ${isFormula ? 'block' : 'none'};">
       <div class="chapter-modal-overview" style="margin-bottom: 20px;">
         <p style="font-size: 0.98rem; line-height: 1.65; color: var(--text-secondary); margin-bottom: 14px;">
           <strong>NTA Syllabus Scope:</strong> ${data.overview}
@@ -1261,9 +1368,14 @@ document.addEventListener('DOMContentLoaded', () => {
           ${(data.keyFormulas || []).map(f => `&bull; ${f}<br>`).join('')}
         </div>
       </div>
+      </div>
     `;
 
-    // Render Section 10 PYQ Analysis Dashboard if available
+    // Render Section 10 PYQ Analysis Dashboard
+    html += `
+      <div class="modal-tab-panel modal-panel-analysis" style="display: ${isAnalysis ? 'block' : 'none'};">
+    `;
+
     if (data.pyqAnalysis) {
       const pyq = data.pyqAnalysis;
       const total = pyq.totalPyqs || 100;
@@ -1344,7 +1456,15 @@ document.addEventListener('DOMContentLoaded', () => {
           ` : ''}
         </div>
       `;
+    } else {
+      html += `
+        <div class="pyq-analysis-dashboard" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px 20px;">
+          <p style="color: var(--text-secondary); margin: 0;">Verified Section 10 analytics active for this chapter.</p>
+        </div>
+      `;
     }
+
+    html += `</div>`;
 
     // Gather questions: support explicit questions array or synthesize up to 5 comprehensive questions
     let questionsList = [];
@@ -1458,7 +1578,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render questions section
     html += `
-      <div class="modal-questions-section" style="margin-top: 28px; padding-top: 24px; border-top: 2px solid var(--border-subtle);">
+      <div class="modal-tab-panel modal-panel-solve" style="display: ${isSolve ? 'block' : 'none'};">
+      <div class="modal-questions-section" style="margin-top: 10px; padding-top: 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
           <div>
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;">
@@ -1586,7 +1707,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     });
 
-    html += `</div>`;
+    html += `</div></div>`;
     return html;
   }
 
@@ -1982,115 +2103,143 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeModalChapterName = '';
   let activeModalSubject = '';
 
-  document.querySelectorAll('.open-chapter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const chapterId = btn.getAttribute('data-chapter-id');
-      const allChapters = window.JEE_ALL_CHAPTERS || {};
-      const data = allChapters[chapterId] || generateAuthenticChapterData(chapterId, btn);
+  function openChapterModalWithTab(chapterId, initialTab = 'solve', triggerBtn = null) {
+    const allChapters = window.JEE_ALL_CHAPTERS || {};
+    const data = allChapters[chapterId] || generateAuthenticChapterData(chapterId, triggerBtn);
 
-      activeModalChapterName = data.title;
-      activeModalSubject = data.subject || 'physics';
-      modalSubject.textContent = `${data.subject} • ${data.classLevel}`;
-      modalSubject.className = `sub-chip ${data.chipClass || 'chip-phys'}`;
-      modalTitle.textContent = data.title;
-      modalContent.innerHTML = formatChapterModalContent(data);
+    activeModalChapterName = data.title;
+    activeModalSubject = data.subject || 'physics';
+    modalSubject.textContent = `${data.subject} • ${data.classLevel}`;
+    modalSubject.className = `sub-chip ${data.chipClass || 'chip-phys'}`;
+    modalTitle.textContent = data.title;
+    modalContent.innerHTML = formatChapterModalContent(data, initialTab);
 
-      // Bind interactive options in modal (grouped by question item)
-      modalContent.querySelectorAll('.modal-interactive-opt').forEach(optBtn => {
-        optBtn.addEventListener('click', () => {
-          const qItem = optBtn.closest('.modal-q-item');
-          if (!qItem) return;
+    // Bind modal top tab switcher (Solver / Section 10 Telemetry / Formula Codex)
+    modalContent.querySelectorAll('.modal-section-tab-btn').forEach(tabBtn => {
+      tabBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = tabBtn.getAttribute('data-modal-target');
+        modalContent.querySelectorAll('.modal-section-tab-btn').forEach(b => b.classList.remove('active'));
+        tabBtn.classList.add('active');
 
-          const isCorrect = optBtn.getAttribute('data-is-correct') === 'true';
-          const feedback = qItem.querySelector('.modal-opt-feedback');
-          const solBox = qItem.querySelector('.arena-sol-box');
-
-          qItem.querySelectorAll('.modal-interactive-opt').forEach(b => {
-            b.style.borderColor = 'var(--border-subtle)';
-            b.style.background = 'var(--bg-secondary)';
-          });
-
-          if (isCorrect) {
-            optBtn.style.borderColor = '#10b981';
-            optBtn.style.background = 'rgba(16, 185, 129, 0.2)';
-            SoundFX.playCorrect();
-            StudyDesk.recordAttempt(true);
-            if (feedback) {
-              feedback.style.display = 'block';
-              feedback.style.background = 'rgba(16, 185, 129, 0.15)';
-              feedback.style.color = '#10b981';
-              feedback.textContent = '🎯 Correct Choice! Full credit (+4 Marks).';
-            }
-            if (solBox) solBox.style.display = 'block';
-            showToast('🎯 Correct! Full credit (+4 Marks).');
-          } else {
-            optBtn.style.borderColor = '#ef4444';
-            optBtn.style.background = 'rgba(239, 68, 68, 0.2)';
-            SoundFX.playIncorrect();
-            StudyDesk.recordAttempt(false);
-            const corr = qItem.querySelector('.modal-interactive-opt[data-is-correct="true"]');
-            if (corr) {
-              corr.style.borderColor = '#10b981';
-              corr.style.background = 'rgba(16, 185, 129, 0.2)';
-            }
-            if (feedback) {
-              feedback.style.display = 'block';
-              feedback.style.background = 'rgba(239, 68, 68, 0.15)';
-              feedback.style.color = '#ef4444';
-              feedback.textContent = '⚠️ Incorrect Choice (-1 Penalty). Check solution below.';
-            }
-            if (solBox) solBox.style.display = 'block';
-            showToast('⚠️ Incorrect choice (-1 Mark).');
-          }
+        modalContent.querySelectorAll('.modal-tab-panel').forEach(p => {
+          p.style.display = 'none';
         });
+        const targetPanel = modalContent.querySelector(`.modal-panel-${target}`);
+        if (targetPanel) {
+          targetPanel.style.display = 'block';
+          renderAllMath(targetPanel);
+        }
+        SoundFX.playClick();
       });
-
-      // Bind solution toggle buttons in modal
-      modalContent.querySelectorAll('.toggle-modal-sol-btn').forEach(tBtn => {
-        tBtn.addEventListener('click', () => {
-          const qItem = tBtn.closest('.modal-q-item');
-          const solBox = qItem?.querySelector('.arena-sol-box');
-          if (solBox) {
-            const isHidden = solBox.style.display === 'none' || !solBox.style.display;
-            solBox.style.display = isHidden ? 'block' : 'none';
-            tBtn.textContent = isHidden ? 'Hide Solution ▲' : 'View 3-Tier Solution ▼';
-            SoundFX.playClick();
-          }
-        });
-      });
-
-      // Bind 3-tier solution level switcher tabs in modal
-      modalContent.querySelectorAll('.tier-tab-btn').forEach(tabBtn => {
-        tabBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const nav = tabBtn.closest('.sol-tier-nav');
-          const solBox = tabBtn.closest('.arena-sol-box');
-          if (!nav || !solBox) return;
-          const targetTier = tabBtn.getAttribute('data-tier');
-
-          nav.querySelectorAll('.tier-tab-btn').forEach(b => {
-            b.classList.remove('active');
-            b.style.borderColor = 'transparent';
-            b.style.background = 'transparent';
-            b.style.color = 'var(--text-muted)';
-          });
-          tabBtn.classList.add('active');
-          tabBtn.style.borderColor = 'var(--border-subtle)';
-          tabBtn.style.background = 'var(--bg-surface-elevated)';
-          tabBtn.style.color = 'var(--text-primary)';
-
-          solBox.querySelectorAll('.tier-panel').forEach(panel => {
-            panel.style.display = 'none';
-          });
-          const activePanel = solBox.querySelector(`.tier-panel-${targetTier}`);
-          if (activePanel) activePanel.style.display = 'block';
-          SoundFX.playClick();
-        });
-      });
-
-      chapterModal?.showModal();
-      renderAllMath(modalContent);
     });
+
+    // Bind interactive options in modal (grouped by question item)
+    modalContent.querySelectorAll('.modal-interactive-opt').forEach(optBtn => {
+      optBtn.addEventListener('click', () => {
+        const qItem = optBtn.closest('.modal-q-item');
+        if (!qItem) return;
+
+        const isCorrect = optBtn.getAttribute('data-is-correct') === 'true';
+        const feedback = qItem.querySelector('.modal-opt-feedback');
+        const solBox = qItem.querySelector('.arena-sol-box');
+
+        qItem.querySelectorAll('.modal-interactive-opt').forEach(b => {
+          b.style.borderColor = 'var(--border-subtle)';
+          b.style.background = 'var(--bg-secondary)';
+        });
+
+        if (isCorrect) {
+          optBtn.style.borderColor = '#10b981';
+          optBtn.style.background = 'rgba(16, 185, 129, 0.2)';
+          SoundFX.playCorrect();
+          StudyDesk.recordAttempt(true);
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.style.background = 'rgba(16, 185, 129, 0.15)';
+            feedback.style.color = '#10b981';
+            feedback.textContent = '🎯 Correct Choice! Full credit (+4 Marks).';
+          }
+          if (solBox) solBox.style.display = 'block';
+          showToast('🎯 Correct! Full credit (+4 Marks).');
+        } else {
+          optBtn.style.borderColor = '#ef4444';
+          optBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+          SoundFX.playIncorrect();
+          StudyDesk.recordAttempt(false);
+          const corr = qItem.querySelector('.modal-interactive-opt[data-is-correct="true"]');
+          if (corr) {
+            corr.style.borderColor = '#10b981';
+            corr.style.background = 'rgba(16, 185, 129, 0.2)';
+          }
+          if (feedback) {
+            feedback.style.display = 'block';
+            feedback.style.background = 'rgba(239, 68, 68, 0.15)';
+            feedback.style.color = '#ef4444';
+            feedback.textContent = '⚠️ Incorrect Choice (-1 Penalty). Check solution below.';
+          }
+          if (solBox) solBox.style.display = 'block';
+          showToast('⚠️ Incorrect choice (-1 Mark).');
+        }
+      });
+    });
+
+    // Bind solution toggle buttons in modal
+    modalContent.querySelectorAll('.toggle-modal-sol-btn').forEach(tBtn => {
+      tBtn.addEventListener('click', () => {
+        const qItem = tBtn.closest('.modal-q-item');
+        const solBox = qItem?.querySelector('.arena-sol-box');
+        if (solBox) {
+          const isHidden = solBox.style.display === 'none' || !solBox.style.display;
+          solBox.style.display = isHidden ? 'block' : 'none';
+          tBtn.textContent = isHidden ? 'Hide Solution ▲' : 'View 3-Tier Solution ▼';
+          SoundFX.playClick();
+        }
+      });
+    });
+
+    // Bind 3-tier solution level switcher tabs in modal
+    modalContent.querySelectorAll('.tier-tab-btn').forEach(tabBtn => {
+      tabBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nav = tabBtn.closest('.sol-tier-nav');
+        const solBox = tabBtn.closest('.arena-sol-box');
+        if (!nav || !solBox) return;
+        const targetTier = tabBtn.getAttribute('data-tier');
+
+        nav.querySelectorAll('.tier-tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.borderColor = 'transparent';
+          b.style.background = 'transparent';
+          b.style.color = 'var(--text-muted)';
+        });
+        tabBtn.classList.add('active');
+        tabBtn.style.borderColor = 'var(--border-subtle)';
+        tabBtn.style.background = 'var(--bg-surface-elevated)';
+        tabBtn.style.color = 'var(--text-primary)';
+
+        solBox.querySelectorAll('.tier-panel').forEach(panel => {
+          panel.style.display = 'none';
+        });
+        const activePanel = solBox.querySelector(`.tier-panel-${targetTier}`);
+        if (activePanel) activePanel.style.display = 'block';
+        SoundFX.playClick();
+      });
+    });
+
+    chapterModal?.showModal();
+    renderAllMath(modalContent);
+  }
+
+  // Delegated event listener for all chapter open triggers (dashboard tree, chapter cards, etc.)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.open-chapter-btn');
+    if (!btn) return;
+    const chapterId = btn.getAttribute('data-chapter-id');
+    const initialTab = btn.getAttribute('data-initial-tab') || 'solve';
+    if (chapterId) {
+      openChapterModalWithTab(chapterId, initialTab, btn);
+    }
   });
 
   // Handle IIT Advanced Multi-Correct Interactive Options

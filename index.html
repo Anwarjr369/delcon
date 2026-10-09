@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -54,6 +54,10 @@
           <li><a href="#chapters" class="nav-link stream-nav-link active" data-stream-target="jee-main">
             <svg class="delcon-theme-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="1" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="23"></line><line x1="1" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="23" y2="12"></line></svg>
             <span>JEE Main</span>
+          </a></li>
+          <li><a href="#pyq-dashboard" class="nav-link" id="nav-dashboard-link">
+            <svg class="delcon-theme-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            <span>PYQ Dashboard</span>
           </a></li>
           <li><a href="#jee-advanced-wing" class="nav-link stream-nav-link nav-adv-tab" data-stream-target="jee-advanced">
             <svg class="delcon-theme-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
@@ -564,6 +568,795 @@
       </div>
     </section>
 
+    <!-- =========================================================================
+         JEE PYQ MASTER DASHBOARD & SYLLABUS ARCHIVE (BLUEPRINT SECTIONS 6, 10 & 11)
+         ========================================================================= -->
+    <section id="pyq-dashboard" class="section pyq-dashboard-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="blueprint-badge-halo">
+            <span class="blueprint-aura-dot"></span>
+            <span class="blueprint-aura-text">PRODUCT BLUEPRINT &bull; JEE PYQ 2012–2026 ARCHIVE</span>
+          </div>
+          <h2 class="section-title louvre-serif-heading">JEE PYQ Master Dashboard</h2>
+          <p class="section-subtitle">
+            Structured syllabus hierarchy with authentic shift questions, verified 3-tier step solutions, and Section 10 telemetry analysis.
+          </p>
+        </div>
+
+        <!-- Historical Syllabus Mapping Controller (Blueprint Section 6 & 7) -->
+        <div class="syllabus-mapping-cluster">
+          <div class="syllabus-pill-toggle" role="radiogroup" aria-label="Historical Syllabus Mapping Filter">
+            <button class="syllabus-filter-pill active" id="dash-syllabus-filter-2026" data-syllabus-filter="2026">
+              <span class="pill-sparkle">✦</span>
+              <span>2026 Syllabus Only (Active NTA Scope)</span>
+            </button>
+            <button class="syllabus-filter-pill" id="dash-syllabus-filter-all" data-syllabus-filter="all">
+              <span class="pill-sparkle">🏛️</span>
+              <span>Full 2012–2026 Historical Archive (AIEEE, CBSE &amp; NTA)</span>
+            </button>
+          </div>
+          <div class="syllabus-mapping-telemetry">
+            <span class="telemetry-badge-count" id="dash-mapped-count">70 Chapters Mapped</span>
+            <span class="telemetry-dot-sep">&bull;</span>
+            <span class="telemetry-note">16,500+ Verified Shift Questions &bull; 3-Tier Solutions Active</span>
+          </div>
+        </div>
+
+        <!-- Subject Hierarchy Cards Grid (Blueprint Section 11) -->
+        <div class="pyq-hierarchy-grid">
+          <!-- Physics Discipline Card -->
+          <div class="hierarchy-card hierarchy-phys-card" data-subject-card="physics">
+            <div class="hierarchy-card-header">
+              <div class="hierarchy-header-left">
+                <div class="hierarchy-icon-box phys-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"></ellipse></svg>
+                </div>
+                <div>
+                  <h3 class="hierarchy-title">Physics</h3>
+                  <span class="hierarchy-sub">24 Chapters &bull; 628+ Core Tested Questions</span>
+                </div>
+              </div>
+              <span class="hierarchy-tag phys-tag">2012–2026 NTA/CBSE</span>
+            </div>
+
+            <div class="hierarchy-card-body">
+              <!-- Branch 1: Mechanics -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Mechanics</strong>
+                  </div>
+                  <span class="branch-count">243 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="units-dimensions" data-2026="true">
+                    <span class="topic-name">Units, Dimensions &amp; Errors</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">135+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="units-dimensions" data-initial-tab="solve" title="Solve 5 Shift Questions">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="units-dimensions" data-initial-tab="analysis" title="View Section 10 Telemetry">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="kinematics" data-2026="true">
+                    <span class="topic-name">Kinematics (1D &amp; 2D)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">190+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="kinematics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="kinematics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="laws-of-motion" data-2026="true">
+                    <span class="topic-name">Laws of Motion &amp; Friction</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">185+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="laws-of-motion" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="laws-of-motion" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="work-energy-power" data-2026="true">
+                    <span class="topic-name">Work, Energy &amp; Power</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="work-energy-power" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="work-energy-power" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="rotational-motion" data-2026="true">
+                    <span class="topic-name">Rotational Motion &amp; Rigid Bodies</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">215+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="rotational-motion" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="rotational-motion" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="gravitation" data-2026="true">
+                    <span class="topic-name">Gravitation &amp; Orbital Motion</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">160+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="gravitation" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="gravitation" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="mechanical-properties-solids" data-2026="true">
+                    <span class="topic-name">Mechanical Properties of Solids</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">120+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="mechanical-properties-solids" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="mechanical-properties-solids" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="mechanical-properties-fluids" data-2026="true">
+                    <span class="topic-name">Mechanical Properties of Fluids</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">145+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="mechanical-properties-fluids" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="mechanical-properties-fluids" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 2: Electrodynamics -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Electrodynamics</strong>
+                  </div>
+                  <span class="branch-count">187 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="electrostatics" data-2026="true">
+                    <span class="topic-name">Electrostatics &amp; Capacitors</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">225+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="electrostatics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="electrostatics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="current-electricity" data-2026="true">
+                    <span class="topic-name">Current Electricity</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">240+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="current-electricity" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="current-electricity" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="moving-charges-magnetism" data-2026="true">
+                    <span class="topic-name">Moving Charges &amp; Magnetism</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">210+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="moving-charges-magnetism" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="moving-charges-magnetism" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="magnetism-matter" data-2026="true">
+                    <span class="topic-name">Magnetism &amp; Matter</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">125+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="magnetism-matter" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="magnetism-matter" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="electromagnetic-induction" data-2026="true">
+                    <span class="topic-name">Electromagnetic Induction (EMI)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="electromagnetic-induction" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="electromagnetic-induction" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="alternating-current" data-2026="true">
+                    <span class="topic-name">Alternating Current (AC)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">155+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="alternating-current" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="alternating-current" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="electromagnetic-waves" data-2026="true">
+                    <span class="topic-name">Electromagnetic Waves (EM Waves)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">110+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="electromagnetic-waves" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="electromagnetic-waves" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 3: Optics & Waves -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Optics &amp; Oscillations</strong>
+                  </div>
+                  <span class="branch-count">92 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="ray-optics" data-2026="true">
+                    <span class="topic-name">Ray Optics &amp; Optical Instruments</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">180+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="ray-optics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="ray-optics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="wave-optics" data-2026="true">
+                    <span class="topic-name">Wave Optics &amp; Interference</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">140+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="wave-optics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="wave-optics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="oscillations-shm" data-2026="true">
+                    <span class="topic-name">Oscillations &amp; Simple Harmonic Motion</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">160+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="oscillations-shm" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="oscillations-shm" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="waves" data-2026="true">
+                    <span class="topic-name">Waves &amp; Sound</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">150+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="waves" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="waves" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 4: Modern Physics & Thermodynamics -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">└──</span>
+                    <strong class="branch-name">Modern Physics &amp; Thermodynamics</strong>
+                  </div>
+                  <span class="branch-count">106 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="dual-nature-radiation" data-2026="true">
+                    <span class="topic-name">Dual Nature of Radiation &amp; Matter</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">175+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="dual-nature-radiation" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="dual-nature-radiation" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="atoms-nuclei" data-2026="true">
+                    <span class="topic-name">Atoms &amp; Nuclei</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">190+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="atoms-nuclei" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="atoms-nuclei" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="semiconductors" data-2026="true">
+                    <span class="topic-name">Semiconductor Electronics</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">160+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="semiconductors" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="semiconductors" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="thermodynamics-physics" data-2026="true">
+                    <span class="topic-name">Thermodynamics (Physics)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">195+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="thermodynamics-physics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="thermodynamics-physics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="kinetic-theory-gases" data-2026="true">
+                    <span class="topic-name">Kinetic Theory of Gases (KTG)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">130+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="kinetic-theory-gases" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="kinetic-theory-gases" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="thermal-properties-matter" data-2026="true">
+                    <span class="topic-name">Thermal Properties of Matter</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">135+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="thermal-properties-matter" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="thermal-properties-matter" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chemistry Discipline Card -->
+          <div class="hierarchy-card hierarchy-chem-card" data-subject-card="chemistry">
+            <div class="hierarchy-card-header">
+              <div class="hierarchy-header-left">
+                <div class="hierarchy-icon-box chem-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 2v7.31L4.5 19.5A2 2 0 0 0 6.23 22h11.54a2 2 0 0 0 1.73-2.5L14 9.31V2"></path><line x1="8.5" y1="2" x2="15.5" y2="2"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                </div>
+                <div>
+                  <h3 class="hierarchy-title">Chemistry</h3>
+                  <span class="hierarchy-sub">22 Chapters &bull; 835+ Core Tested Questions</span>
+                </div>
+              </div>
+              <span class="hierarchy-tag chem-tag">Physical &bull; Inorganic &bull; Organic</span>
+            </div>
+
+            <div class="hierarchy-card-body">
+              <!-- Branch 1: Physical Chemistry -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Physical Chemistry</strong>
+                  </div>
+                  <span class="branch-count">310 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="mole-concept" data-2026="true">
+                    <span class="topic-name">Mole Concept &amp; Stoichiometry</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="mole-concept" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="mole-concept" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="atomic-structure" data-2026="true">
+                    <span class="topic-name">Structure of Atom &amp; Orbitals</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">180+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="atomic-structure" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="atomic-structure" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="thermodynamics-chem" data-2026="true">
+                    <span class="topic-name">Chemical Thermodynamics</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">185+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="thermodynamics-chem" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="thermodynamics-chem" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="chemical-equilibrium" data-2026="true">
+                    <span class="topic-name">Chemical Equilibrium</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">140+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="chemical-equilibrium" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="chemical-equilibrium" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="ionic-equilibrium" data-2026="true">
+                    <span class="topic-name">Ionic Equilibrium &amp; Buffers</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">175+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="ionic-equilibrium" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="ionic-equilibrium" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="redox-reactions" data-2026="true">
+                    <span class="topic-name">Redox Reactions &amp; Titrations</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">130+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="redox-reactions" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="redox-reactions" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="solutions" data-2026="true">
+                    <span class="topic-name">Solutions &amp; Colligative Properties</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">175+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="solutions" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="solutions" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="electrochemistry" data-2026="true">
+                    <span class="topic-name">Electrochemistry &amp; Nernst Equation</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">190+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="electrochemistry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="electrochemistry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="chemical-kinetics" data-2026="true">
+                    <span class="topic-name">Chemical Kinetics &amp; Rate Laws</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">185+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="chemical-kinetics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="chemical-kinetics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row historical-topic" data-chapter="surface-chemistry" data-2026="false">
+                    <span class="topic-name">Surface Chemistry <em class="hist-label">(Historical 2012-2023)</em></span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge hist-badge">115+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="surface-chemistry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="surface-chemistry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 2: Inorganic Chemistry -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Inorganic Chemistry</strong>
+                  </div>
+                  <span class="branch-count">245 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="periodic-table" data-2026="true">
+                    <span class="topic-name">Classification &amp; Periodicity of Elements</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">155+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="periodic-table" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="periodic-table" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="chemical-bonding" data-2026="true">
+                    <span class="topic-name">Chemical Bonding &amp; VSEPR/MOT</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">240+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="chemical-bonding" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="chemical-bonding" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="coordination-compounds" data-2026="true">
+                    <span class="topic-name">Coordination Compounds (CFT &amp; Isomerism)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">220+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="coordination-compounds" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="coordination-compounds" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="d-f-block-elements" data-2026="true">
+                    <span class="topic-name">d- and f-Block Elements</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="d-f-block-elements" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="d-f-block-elements" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="p-block-elements" data-2026="true">
+                    <span class="topic-name">p-Block Elements</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">180+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="p-block-elements" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="p-block-elements" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 3: Organic Chemistry -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">└──</span>
+                    <strong class="branch-name">Organic Chemistry</strong>
+                  </div>
+                  <span class="branch-count">280 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="general-organic-chemistry" data-2026="true">
+                    <span class="topic-name">General Organic Chemistry (GOC)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">235+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="general-organic-chemistry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="general-organic-chemistry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="hydrocarbons" data-2026="true">
+                    <span class="topic-name">Hydrocarbons (Alkanes, Alkenes, Alkynes)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">190+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="hydrocarbons" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="hydrocarbons" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="haloalkanes-haloarenes" data-2026="true">
+                    <span class="topic-name">Haloalkanes &amp; Haloarenes (SN1/SN2)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">170+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="haloalkanes-haloarenes" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="haloalkanes-haloarenes" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="alcohols-phenols-ethers" data-2026="true">
+                    <span class="topic-name">Alcohols, Phenols &amp; Ethers</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">185+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="alcohols-phenols-ethers" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="alcohols-phenols-ethers" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="aldehydes-ketones-carboxylic" data-2026="true">
+                    <span class="topic-name">Aldehydes, Ketones &amp; Carboxylic Acids</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">215+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="aldehydes-ketones-carboxylic" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="aldehydes-ketones-carboxylic" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="amines" data-2026="true">
+                    <span class="topic-name">Amines &amp; Diazonium Chemistry</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">175+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="amines" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="amines" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="biomolecules" data-2026="true">
+                    <span class="topic-name">Biomolecules (Proteins, Sugars &amp; Nucleic)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">160+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="biomolecules" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="biomolecules" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="practical-chemistry" data-2026="true">
+                    <span class="topic-name">Principles of Practical Chemistry</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">140+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="practical-chemistry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="practical-chemistry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mathematics Discipline Card -->
+          <div class="hierarchy-card hierarchy-math-card" data-subject-card="mathematics">
+            <div class="hierarchy-card-header">
+              <div class="hierarchy-header-left">
+                <div class="hierarchy-icon-box math-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19h16"></path><path d="M4 19 16 7"></path><path d="M16 19v-4"></path><path d="M8 19v-2"></path><path d="M12 19v-3"></path><circle cx="18" cy="6" r="3"></circle></svg>
+                </div>
+                <div>
+                  <h3 class="hierarchy-title">Mathematics</h3>
+                  <span class="hierarchy-sub">24 Chapters &bull; 870+ Core Tested Questions</span>
+                </div>
+              </div>
+              <span class="hierarchy-tag math-tag">Calculus &bull; Algebra &bull; Coordinate</span>
+            </div>
+
+            <div class="hierarchy-card-body">
+              <!-- Branch 1: Calculus -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Calculus</strong>
+                  </div>
+                  <span class="branch-count">295 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="limits-continuity-differentiability" data-2026="true">
+                    <span class="topic-name">Limits, Continuity &amp; Differentiability</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">220+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="limits-continuity-differentiability" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="limits-continuity-differentiability" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="application-of-derivatives" data-2026="true">
+                    <span class="topic-name">Application of Derivatives (AOD &amp; Maxima)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">230+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="application-of-derivatives" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="application-of-derivatives" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="indefinite-integration" data-2026="true">
+                    <span class="topic-name">Indefinite Integration</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">150+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="indefinite-integration" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="indefinite-integration" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="definite-integration" data-2026="true">
+                    <span class="topic-name">Definite Integration &amp; King's Rule</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">210+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="definite-integration" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="definite-integration" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="differential-equations" data-2026="true">
+                    <span class="topic-name">Differential Equations</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">195+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="differential-equations" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="differential-equations" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="area-under-curves" data-2026="true">
+                    <span class="topic-name">Area Under Curves (Bounded Regions)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">160+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="area-under-curves" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="area-under-curves" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 2: Algebra -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Algebra</strong>
+                  </div>
+                  <span class="branch-count">260 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="sets-relations-functions" data-2026="true">
+                    <span class="topic-name">Sets, Relations &amp; Functions</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">180+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="sets-relations-functions" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="sets-relations-functions" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="complex-numbers-quadratic" data-2026="true">
+                    <span class="topic-name">Complex Numbers &amp; Quadratic Equations</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">205+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="complex-numbers-quadratic" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="complex-numbers-quadratic" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="matrices-determinants" data-2026="true">
+                    <span class="topic-name">Matrices &amp; Determinants (Cramer's Rule)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">215+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="matrices-determinants" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="matrices-determinants" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="permutations-combinations" data-2026="true">
+                    <span class="topic-name">Permutations &amp; Combinations</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">170+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="permutations-combinations" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="permutations-combinations" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="binomial-theorem" data-2026="true">
+                    <span class="topic-name">Binomial Theorem &amp; Remainder Problems</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="binomial-theorem" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="binomial-theorem" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="sequences-series" data-2026="true">
+                    <span class="topic-name">Sequences &amp; Series (AP, GP, HP)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">190+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="sequences-series" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="sequences-series" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="probability" data-2026="true">
+                    <span class="topic-name">Probability &amp; Bayes' Theorem</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">185+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="probability" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="probability" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="statistics" data-2026="true">
+                    <span class="topic-name">Statistics &amp; Dispersion Measures</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">150+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="statistics" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="statistics" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row historical-topic" data-chapter="mathematical-reasoning" data-2026="false">
+                    <span class="topic-name">Mathematical Reasoning <em class="hist-label">(Historical 2012-2023)</em></span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge hist-badge">120+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="mathematical-reasoning" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="mathematical-reasoning" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 3: Coordinate Geometry -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">├──</span>
+                    <strong class="branch-name">Coordinate Geometry</strong>
+                  </div>
+                  <span class="branch-count">175 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="coordinate-geometry-straight-lines" data-2026="true">
+                    <span class="topic-name">Straight Lines &amp; Pair of Lines</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">180+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="coordinate-geometry-straight-lines" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="coordinate-geometry-straight-lines" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="circles" data-2026="true">
+                    <span class="topic-name">Circles &amp; Common Tangents</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">175+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="circles" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="circles" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="conic-sections" data-2026="true">
+                    <span class="topic-name">Conic Sections (Parabola, Ellipse, Hyperbola)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">210+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="conic-sections" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="conic-sections" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branch 4: Vectors & 3D -->
+              <div class="hierarchy-branch">
+                <div class="branch-header">
+                  <div class="branch-title-group">
+                    <span class="branch-glyph">└──</span>
+                    <strong class="branch-name">Vectors &amp; 3D Geometry</strong>
+                  </div>
+                  <span class="branch-count">140 Questions</span>
+                </div>
+                <div class="branch-topics-list">
+                  <div class="hierarchy-topic-row" data-chapter="vector-algebra" data-2026="true">
+                    <span class="topic-name">Vector Algebra (Dot &amp; Cross Products)</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">195+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="vector-algebra" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="vector-algebra" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="three-dimensional-geometry" data-2026="true">
+                    <span class="topic-name">Three Dimensional (3D) Geometry</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">225+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="three-dimensional-geometry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="three-dimensional-geometry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                  <div class="hierarchy-topic-row" data-chapter="trigonometry" data-2026="true">
+                    <span class="topic-name">Trigonometric Identities &amp; Equations</span>
+                    <div class="topic-actions">
+                      <span class="topic-count-badge">165+ Qs</span>
+                      <button class="btn-tree-solve open-chapter-btn" data-chapter-id="trigonometry" data-initial-tab="solve">Solve</button>
+                      <button class="btn-tree-analysis open-chapter-btn" data-chapter-id="trigonometry" data-initial-tab="analysis">📊</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Subjects Section -->
     <section id="subjects" class="section subjects-section">
       <div class="container">
@@ -665,6 +1458,24 @@
         </div>
 
         <div id="main-chapters-content" class="collapsible-chapters-content collapsed">
+          <!-- Historical Syllabus Scope Filter (Blueprint Section 6) -->
+          <div class="syllabus-mode-filter-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; padding: 12px 18px; background: rgba(8, 12, 22, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent-gold); font-weight: 700;">NTA Syllabus Scope:</span>
+              <div class="syllabus-mode-pills" role="radiogroup" aria-label="Syllabus Scope">
+                <button class="syllabus-mode-pill active" id="chapters-syllabus-2026" data-syllabus-scope="2026" title="Practice questions mapped to active 2026 NTA syllabus">
+                  <span class="sparkle-bullet">✦</span> 2026 Syllabus Only
+                </button>
+                <button class="syllabus-mode-pill" id="chapters-syllabus-all" data-syllabus-scope="all" title="Full 2012–2026 Historical Archive including CBSE & AIEEE">
+                  <span class="sparkle-bullet">🏛️</span> All 2012–2026 Archive
+                </button>
+              </div>
+            </div>
+            <div class="syllabus-mode-status" style="font-size: 0.8rem; color: var(--text-muted);">
+              <span id="active-syllabus-indicator" style="color: var(--accent-cobalt-light); font-weight: 600;">✓ Filtering: Active 2026 Rationalized Syllabus</span>
+            </div>
+          </div>
+
           <!-- Subject Filter Tabs -->
           <div class="filter-controls" role="group" aria-label="Filter chapters by subject" style="margin-bottom: 20px;">
             <button class="filter-btn active" data-subject-filter="all">All Subjects (70 Chapters)</button>

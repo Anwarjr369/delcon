@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Delcon JEE Mains PYQ Platform - Design Tokens & CSS Custom Properties
    ========================================================================== */
 :root {
@@ -6108,4 +6108,503 @@ body {
   letter-spacing: 0.18em;
   color: #93c5fd;
   text-transform: uppercase;
+}
+
+/* ==========================================================================
+   SANDHILL STUDIO / LOUVRE: JEE PYQ MASTER DASHBOARD & SYLLABUS ARCHIVE
+   Blueprint Architecture (Sections 6, 7, 10 & 11)
+   ========================================================================== */
+
+.pyq-dashboard-section {
+  position: relative;
+  background: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 30%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 20% 70%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+  padding: 80px 0 90px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.blueprint-badge-halo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(14, 19, 34, 0.85);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.25), inset 0 0 10px rgba(37, 99, 235, 0.15);
+  margin-bottom: 18px;
+  backdrop-filter: blur(8px);
+}
+
+.blueprint-aura-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cobalt-light);
+  box-shadow: 0 0 10px #60a5fa, 0 0 20px #2563eb;
+  animation: pulseAura 2s infinite ease-in-out;
+}
+
+@keyframes pulseAura {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.75; }
+}
+
+.blueprint-aura-text {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.louvre-serif-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Syllabus Mapping Controller (Blueprint Section 6 & 7) */
+.syllabus-mapping-cluster {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 32px 0 40px;
+  padding: 14px 22px;
+  background: rgba(14, 19, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.syllabus-pill-toggle,
+.syllabus-mode-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5, 7, 12, 0.85);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.syllabus-filter-pill,
+.syllabus-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-sans);
+}
+
+.syllabus-filter-pill:hover,
+.syllabus-mode-pill:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.syllabus-filter-pill.active,
+.syllabus-mode-pill.active {
+  color: #ffffff;
+  background: var(--accent-gradient);
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.45);
+}
+
+.pill-sparkle,
+.sparkle-bullet {
+  font-size: 0.86rem;
+  color: var(--accent-gold);
+}
+
+.syllabus-mapping-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.telemetry-badge-count {
+  font-weight: 800;
+  color: var(--accent-cobalt-light);
+  background: rgba(37, 99, 235, 0.14);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.telemetry-dot-sep {
+  color: var(--text-muted);
+}
+
+.telemetry-note {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* 3-Column Hierarchy Grid (Blueprint Section 11) */
+.pyq-hierarchy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1080px) {
+  .pyq-hierarchy-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.hierarchy-card {
+  background: linear-gradient(180deg, rgba(14, 19, 34, 0.95) 0%, rgba(8, 11, 21, 0.98) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hierarchy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  opacity: 0.85;
+}
+
+.hierarchy-phys-card::before {
+  background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+}
+
+.hierarchy-chem-card::before {
+  background: linear-gradient(90deg, #22d3ee 0%, #06b6d4 50%, #0891b2 100%);
+}
+
+.hierarchy-math-card::before {
+  background: linear-gradient(90deg, #818cf8 0%, #6366f1 50%, #4f46e5 100%);
+}
+
+.hierarchy-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(37, 99, 235, 0.2);
+}
+
+.hierarchy-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hierarchy-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hierarchy-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 19, 34, 0.9);
+  border: 1px solid var(--border-subtle);
+}
+
+.hierarchy-icon-box.phys-icon {
+  color: var(--color-phys);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.2);
+}
+
+.hierarchy-icon-box.chem-icon {
+  color: var(--color-chem);
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.2);
+}
+
+.hierarchy-icon-box.math-icon {
+  color: var(--color-math);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.2);
+}
+
+.hierarchy-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 2px 0;
+  letter-spacing: 0.02em;
+}
+
+.hierarchy-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.hierarchy-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+}
+
+.hierarchy-tag.phys-tag {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.28);
+}
+
+.hierarchy-tag.chem-tag {
+  background: rgba(6, 182, 212, 0.12);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.28);
+}
+
+.hierarchy-tag.math-tag {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.28);
+}
+
+/* Tree Branches */
+.hierarchy-branch {
+  margin-bottom: 20px;
+  background: rgba(5, 7, 12, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.branch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.branch-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.branch-glyph {
+  font-family: var(--font-mono);
+  color: var(--accent-cobalt-light);
+  font-size: 0.85rem;
+}
+
+.branch-name {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.branch-count {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  background: rgba(200, 169, 126, 0.1);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(200, 169, 126, 0.2);
+}
+
+.branch-topics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hierarchy-topic-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  background: rgba(14, 19, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.hierarchy-topic-row:hover {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: translateX(3px);
+}
+
+.hierarchy-topic-row.hidden-by-syllabus {
+  display: none !important;
+}
+
+.hierarchy-topic-row.historical-topic {
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.15);
+}
+
+.hist-label {
+  font-size: 0.72rem;
+  color: #f59e0b;
+  font-style: italic;
+}
+
+.hist-badge {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #f59e0b !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+.topic-name {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  max-width: 58%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hierarchy-topic-row:hover .topic-name {
+  color: var(--text-primary);
+}
+
+.topic-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topic-count-badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-tree-solve {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-cobalt-subtle);
+  color: var(--accent-cobalt-light);
+  border: 1px solid var(--accent-cobalt-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tree-solve:hover {
+  background: var(--accent-cobalt);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+}
+
+.btn-tree-analysis {
+  font-size: 0.76rem;
+  padding: 3px 7px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tree-analysis:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+/* Modal Tabbed Header (Solver / Section 10 Telemetry / Formula Codex) */
+.chapter-modal-tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-section-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-section-tab-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.modal-section-tab-btn.active {
+  color: #ffffff;
+  background: var(--accent-gradient);
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.35);
+}
+
+.modal-tab-panel {
+  animation: modalPanelFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPanelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
