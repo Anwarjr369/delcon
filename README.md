@@ -1,6 +1,6 @@
 # DECLON AGENCY
 
-The root site is a responsive, static landing page for DECLON AGENCY. It introduces the agency, its strategic and creative services, and its approach to international market expansion. An image-led, motion-revealed perspective section adds a warm, architectural visual direction. The closing contact area includes the Calicut office location and clickable email and telephone links.
+The root site is a responsive, static landing page for DECLON AGENCY. It introduces the agency, its strategic and creative services, and its approach to international market expansion. An image-led, motion-revealed perspective section and a cursor-reactive 3D letterform add movement to the page. The closing contact area includes the Calicut office location and clickable email and telephone links.
 
 ## Run locally
 

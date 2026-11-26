@@ -35,3 +35,23 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
 
   revealItems.forEach((item) => revealObserver.observe(item));
 }
+
+const motionStage = document.querySelector(".motion-stage");
+const motionObject = document.querySelector(".motion-object");
+const canTiltMotion = window.matchMedia("(hover: hover) and (pointer: fine)");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (motionStage && motionObject && canTiltMotion.matches && !prefersReducedMotion.matches) {
+  motionStage.addEventListener("pointermove", (event) => {
+    const bounds = motionStage.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    motionObject.style.setProperty("--motion-y", `${x * 28 - 18}deg`);
+    motionObject.style.setProperty("--motion-x", `${y * -18 + 7}deg`);
+  });
+
+  motionStage.addEventListener("pointerleave", () => {
+    motionObject.style.removeProperty("--motion-x");
+    motionObject.style.removeProperty("--motion-y");
+  });
+}
