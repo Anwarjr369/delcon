@@ -21,6 +21,25 @@ if (menuToggle && primaryNav) {
 const year = document.querySelector("#current-year");
 if (year) year.textContent = String(new Date().getFullYear());
 
+const scrollProgress = document.querySelector(".scroll-progress span");
+if (scrollProgress) {
+  let scrollFrame = null;
+  const updateScrollProgress = () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0;
+    scrollProgress.style.transform = `scaleX(${progress})`;
+    scrollFrame = null;
+  };
+  const scheduleScrollProgress = () => {
+    if (scrollFrame !== null) return;
+    scrollFrame = window.requestAnimationFrame(updateScrollProgress);
+  };
+
+  window.addEventListener("scroll", scheduleScrollProgress, { passive: true });
+  window.addEventListener("resize", scheduleScrollProgress, { passive: true });
+  updateScrollProgress();
+}
+
 const revealItems = document.querySelectorAll(".motion-reveal");
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   document.documentElement.classList.add("has-motion");
