@@ -87,6 +87,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .motion-logo-orbit i { top: -.1em; right: -.1em; background: #efa51d; box-shadow: 0 0 16px rgba(239,165,29,.7); }
 .motion-logo-tagline { margin-top: 25px; padding-left: .34em; color: #e2eeea; font-family: var(--font-body); font-size: clamp(8px, 1vw, 12px); font-weight: 600; letter-spacing: .34em; text-shadow: 0 2px 0 rgba(7,23,29,.8), 0 4px 0 rgba(7,23,29,.65); }
 .motion-outline { z-index: 0; color: transparent; -webkit-text-stroke: 1px rgba(245,243,238,.54); transform: translate3d(46px,-22px,-50px); opacity: .7; }
+.motion-outline-word { color: transparent; text-shadow: none; -webkit-text-stroke: 1px rgba(245,243,238,.54); }
+.motion-outline-orbit { border-color: rgba(245,243,238,.54); }
+.motion-outline-orbit i { background: rgba(245,243,238,.72); box-shadow: none; }
 .motion-axis { position: absolute; color: rgba(245,243,238,.56); font-family: var(--font-display); font-size: 8px; font-weight: 600; letter-spacing: .12em; }
 .motion-axis-x { top: 22%; left: 10%; }
 .motion-axis-y { right: 10%; bottom: 20%; }
