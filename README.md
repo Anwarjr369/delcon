@@ -14,6 +14,6 @@ The page uses `agency.css` and `agency.js`; it has no build step or package depe
 
 ## Publishing
 
-The configured GitHub Pages site serves the repository root from `main`. Publishing this landing page requires merging the changes to `main`; the public URL is `https://anwarjr369.github.io/delcon/`.
+The configured GitHub Pages site serves the repository root from `main`. Publishing this landing page requires merging the changes to `main`; the public URL is `https://anwarjr369.github.io/declon/`.
 
 The previous JEE PYQ platform files and image assets remain in the repository, but are no longer referenced by the root page.
