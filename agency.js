@@ -65,8 +65,8 @@ if (motionStage && motionObject && canTiltMotion.matches && !prefersReducedMotio
     const bounds = motionStage.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
     const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    motionObject.style.setProperty("--motion-y", `${x * 28 - 18}deg`);
-    motionObject.style.setProperty("--motion-x", `${y * -18 + 7}deg`);
+    motionObject.style.setProperty("--motion-y", `${x * 12 - 6}deg`);
+    motionObject.style.setProperty("--motion-x", `${y * -10 + 3}deg`);
   });
 
   motionStage.addEventListener("pointerleave", () => {
